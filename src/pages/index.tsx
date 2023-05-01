@@ -1,3 +1,5 @@
+import LoginCard from "@/components/LoginCard";
+import NavBar from "@/components/NavBar";
 import { Inter } from "next/font/google";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -5,7 +7,7 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
   return (
     <main className={`${inter.className}`}>
-      <p>TEST</p>
+      <NavBar />
     </main>
   );
 }
