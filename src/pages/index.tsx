@@ -1,5 +1,6 @@
-import LoginCard from "@/components/LoginCard";
 import NavBar from "@/components/NavBar";
+import NewItemCard from "@/components/NewItemCard";
+import Table from "@/components/Table";
 
 import { Inter } from "next/font/google";
 
@@ -11,9 +12,10 @@ export default function Home() {
       <NavBar />
       <div className="p-6 h-[93vh]">
         <div className="card bg-base-100 shadow-xl h-full ">
-          <div className="card-body">
-            <h2 className="card-title">Crear Simulador ENARM</h2>
-            <p>If a dog chews shoes whose shoes does he choose?</p>
+          <div className="card-body justify-around">
+            <h2 className="card-title">Simuladores ENARM</h2>
+            <Table />
+            <NewItemCard />
           </div>
         </div>
       </div>
