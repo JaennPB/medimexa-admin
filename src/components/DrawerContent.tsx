@@ -12,16 +12,18 @@ function DrawerContent({ children }: Props) {
       <div className="drawer-content">{children}</div>
       <div className="drawer-side">
         <label htmlFor="my-drawer" className="drawer-overlay"></label>
-        <ul className="menu menu-normal p-4 w-96 bg-primary text-primary-content">
+        <ul className="menu menu-normal p-4 w-96 bg-base-200 text-base-content">
           <li className="menu-title mt-5 mb-10">
             <span>Menú Administrador</span>
           </li>
           <li>
             <Link href="/simuladores">Simuladores ENARM</Link>
           </li>
+          <div className="divider mt-1 mb-1"></div>
           <li>
             <Link href="/mexaquiz">Mexaquiz</Link>
           </li>
+          <div className="divider mt-1 mb-1"></div>
           <li>
             <Link href="/flashcards">Flashcards</Link>
           </li>
