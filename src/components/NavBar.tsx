@@ -45,7 +45,7 @@ function NavBar() {
         </div>
       </div>
       <div className="navbar-center">
-        <Image src={logo} alt="logo" className="w-32" />
+        <Image src={logo} alt="logo" className="w-36" />
       </div>
       <div className="navbar-end">
         <div className="dropdown dropdown-end">
