@@ -9,8 +9,12 @@ function NavBar() {
   return (
     <div className="navbar bg-base-100 h-[7vh]">
       <div className="navbar-start">
-        <div className="dropdown">
-          <label tabIndex={0} className="btn btn-ghost btn-circle">
+        <div>
+          <label
+            tabIndex={0}
+            className="btn btn-ghost btn-circle"
+            htmlFor="my-drawer"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -26,23 +30,6 @@ function NavBar() {
               />
             </svg>
           </label>
-          <ul
-            tabIndex={0}
-            className="menu menu-normal dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
-          >
-            <li className="menu-title">
-              <span>Menú Administrador</span>
-            </li>
-            <li>
-              <Link href="/simuladores">Simuladores ENARM</Link>
-            </li>
-            <li>
-              <Link href="/mexaquiz">Mexaquiz</Link>
-            </li>
-            <li>
-              <Link href="/flashcards">Flashcards</Link>
-            </li>
-          </ul>
         </div>
       </div>
       <div className="navbar-center">
