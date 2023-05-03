@@ -13,7 +13,7 @@ export default function Home() {
       <NavBar />
       <DashboardCard>
         <NewItemCard title="Flashcards Medimexa" />
-        <Table />
+        <Table description="Barajas" hasCategory />
       </DashboardCard>
     </main>
   );

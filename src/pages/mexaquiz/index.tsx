@@ -13,7 +13,7 @@ export default function Home() {
       <NavBar />
       <DashboardCard>
         <NewItemCard title="Mexaquiz" />
-        <Table />
+        <Table description="Pregúntas" hasCategory />
       </DashboardCard>
     </main>
   );

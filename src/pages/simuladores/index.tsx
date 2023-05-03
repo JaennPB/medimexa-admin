@@ -13,7 +13,7 @@ export default function Home() {
       <NavBar />
       <DashboardCard>
         <NewItemCard title="Simuladores ENARM" />
-        <Table />
+        <Table description="Pregúntas" />
       </DashboardCard>
     </main>
   );
