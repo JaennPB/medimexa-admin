@@ -1,8 +1,8 @@
 import React, { ReactNode } from "react";
 
-type Props = {
+interface Props {
   children: ReactNode;
-};
+}
 
 function DashboardCard({ children }: Props) {
   return (

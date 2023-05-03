@@ -13,7 +13,7 @@ const DUMY_DATA = [
 
 function Table() {
   return (
-    <div className="overflow-x-auto mt-6 h-[36rem]">
+    <div className="overflow-x-auto mt-6 h-auto max-h-[39rem]">
       <table className="table w-full">
         <thead>
           <tr>
@@ -30,7 +30,7 @@ function Table() {
             <tr>
               <th className="text-center w-10">{index + 1}</th>
               <td className="text-center w-80">{item}</td>
-              <td className="text-center w-80">{"05/12/23"}</td>
+              <td className="text-center w-80">05/12/23</td>
               <td className="text-center w-80">120/280</td>
               <td className="text-center w-80">ID-12341354535</td>
               <td className="text-center w-80">

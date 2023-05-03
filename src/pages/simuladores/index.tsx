@@ -12,7 +12,7 @@ export default function Home() {
     <main className={`bg-base-200 h-screen w-screen ${inter.className}`}>
       <NavBar />
       <DashboardCard>
-        <NewItemCard />
+        <NewItemCard title="Simuladores ENARM" />
         <Table />
       </DashboardCard>
     </main>
