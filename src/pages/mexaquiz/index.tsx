@@ -12,7 +12,7 @@ export default function Home() {
     <main className={`bg-base-200 h-screen w-screen ${inter.className}`}>
       <NavBar />
       <DashboardCard>
-        <NewItemCard title="Mexaquiz" />
+        <NewItemCard title="Mexaquiz" description="Nuevo Quiz" />
         <Table description="Pregúntas" hasCategory />
       </DashboardCard>
     </main>

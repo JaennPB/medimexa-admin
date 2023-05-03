@@ -1,5 +1,6 @@
 import Image from "next/image";
 import React from "react";
+import Link from "next/link";
 
 import logo from "../../assets/logo.png";
 import avatar from "../../assets/avatar.jpeg";
@@ -33,19 +34,19 @@ function NavBar() {
               <span>Menú Administrador</span>
             </li>
             <li>
-              <a>Simuladores ENARM</a>
+              <Link href="/simuladores">Simuladores ENARM</Link>
             </li>
             <li>
-              <a>Mexaquiz</a>
+              <Link href="/mexaquiz">Mexaquiz</Link>
             </li>
             <li>
-              <a>Flashcards</a>
+              <Link href="/flashcards">Flashcards</Link>
             </li>
           </ul>
         </div>
       </div>
       <div className="navbar-center">
-        <Image src={logo} alt="logo" className="w-36" />
+        <Image src={logo} alt="logo" className="w-44" />
       </div>
       <div className="navbar-end">
         <div className="dropdown dropdown-end">
