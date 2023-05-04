@@ -11,7 +11,7 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
   return (
     <main className={`bg-base-200 h-screen w-screen ${inter.className}`}>
-      <ModalCreateNew description="Estás a punto de crear una nueva baraja. Más tarde podrás volver para completar, editar o eliminar la baraja." />
+      <ModalCreateNew description="Más tarde podrás volver para completar, editar o eliminar la baraja." />
       <DrawerContent>
         <NavBar />
         <DashboardCard>
