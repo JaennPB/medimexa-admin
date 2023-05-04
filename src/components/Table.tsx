@@ -55,8 +55,15 @@ function Table({ description, hasCategory }: Props) {
               <td className="text-center w-80">ID-12341354535</td>
               {hasCategory && <td className="text-center w-80">Cirugía</td>}
               <td className="text-center w-80">
-                <button className="btn btn-secondary btn-wide">Editar</button>
-                <button className="btn btn-accent ml-6">Borrar</button>
+                <label
+                  className="btn btn-secondary btn-wide"
+                  htmlFor="my-modal-3"
+                >
+                  Editar
+                </label>
+                <label className="btn btn-accent ml-6" htmlFor="my-modal-2">
+                  Borrar
+                </label>
               </td>
             </tr>
           ))}
