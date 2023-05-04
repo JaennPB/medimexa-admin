@@ -9,7 +9,9 @@ function NewItemCard({ title, description }: Props) {
       <div className="card-body">
         <div className="card-actions justify-between items-center">
           <h2 className="card-title">{title}</h2>
-          <button className="btn btn-primary">{description}</button>
+          <label htmlFor="my-modal-6" className="btn btn-primary">
+            {description}
+          </label>
         </div>
       </div>
     </div>

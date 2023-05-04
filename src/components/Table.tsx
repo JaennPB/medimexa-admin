@@ -47,7 +47,7 @@ function Table({ description, hasCategory }: Props) {
         </thead>
         <tbody>
           {DUMY_DATA.map((item, index) => (
-            <tr>
+            <tr key={index}>
               <th className="text-center w-10">{index + 1}</th>
               <td className="text-center w-80">{item}</td>
               <td className="text-center w-80">05/12/23</td>
