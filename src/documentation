@@ -1,0 +1,160 @@
+documentation
+
+import React, {useState, useEffect} from 'react';
+import logo from './logo.svg';
+import './App.css';
+import User, {userQuery} from './app/models/User';
+import Role  from './app/models/Role';
+import AuthService from './app/services/auth';
+import StorageService from './app/services/storage';
+
+
+---Obtener un modelo
+userQuery.find('CSIhKMTxD1Dr6LwRUcxh').then((userDb:any)=>{
+    userDb.media.all().then((medias:any)=>{
+        medias.map(async (media:any)=>{
+          media.delete();
+        })
+    })
+})
+
+
+---obtener Todos los modelos
+
+userQuery.all().then((users:any)=>{
+	
+
+})
+
+---buscar 
+userQuery.where('role_id','==', role.data.id).then((users:any)=>{
+	
+
+})
+
+---buscar avanzado
+import {where} from 'firebase/firestore'
+userQuery.whereRaw([
+	where('role_id','==', role.data.id),
+	where('email','==', 'email.com')
+]).then((users:any)=>{
+
+})
+
+
+
+
+---Crear un modelo
+/* Revisar cada interfaz para saver que data llevaria cada clase */
+
+const role:any = new  Role({
+   name:'estudiante'
+});
+
+role.save().then((docRef:any)=>{
+
+    console.log('role creado', role);
+
+    const user:any = new User({
+    	name:'fernando',
+    	lastname:'villanueva',
+    	email:'fvillanueva@gmail.com',
+    	password:'password',
+     	role_id:role.data.id,
+   })
+
+   user.save()
+
+
+})
+
+
+---Update
+
+
+user.data.name = 'Nuevo nombre';
+user.update();
+
+
+--Delete
+
+
+user.delete();
+
+
+
+
+
+---Reactividad
+
+const [user, setUser] = useState<any>({});
+userQuery.find('CSIhKMTxD1Dr6LwRUcxh').then((userDb:any)=>{
+	setUser(userDb); 
+})
+
+ return (<p>{user.data.id}</p>
+
+
+--- Users in realtime
+
+qUser.subscribe((todos:any)=>{
+
+  console.log('todos', todos)
+})
+
+
+---Login
+ AuthService.login('fvillanueva@gmail.com','password').then(()=>{
+   console.log(AuthService.getUser())
+ })
+
+---Logout
+ AuthService.logout();
+
+---Register
+
+ CREATE NEW User
+
+
+
+
+
+---Guardar archivo
+
+user.media.save('file', file).then((mediaDb:any)=>{
+     
+
+
+})
+
+
+--- OBtener archivos
+user.media.all().then((mediasDb:any)=>{
+     
+
+
+})
+
+
+
+--- OBtener archivos por tipo
+user.media.type('file').then((mediasDb:any)=>{
+     
+
+})
+
+
+--- url del archivos 
+user.media.type('file').then(async (mediasDb:any)=>{
+	let media = medias[0];
+    let url = await media.getUrl()
+})
+
+
+
+user.media.type('file').then(async (mediasDb:any)=>{
+	let media = medias[0];
+    media.delete();
+})
+
+
