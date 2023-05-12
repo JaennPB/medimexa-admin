@@ -1,16 +1,20 @@
 import React, { useState } from "react";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 import logo from "../../assets/logo.png";
-import Image from "next/image";
+import AuthService from "../app/services/auth";
 
 function LoginCard() {
-  const [email, setEmail] = useState<string>();
-  const [password, setPassword] = useState<string>();
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
 
   const [error, setError] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
 
-  function loginHandler() {
+  const router = useRouter();
+
+  async function loginHandler() {
     if (!email || !password) {
       setError(true);
 
@@ -21,12 +25,21 @@ function LoginCard() {
       return;
     }
 
-    setLoading(true);
-    console.log(email, password);
-
-    setTimeout(() => {
+    try {
+      setLoading(true);
+      const response = await AuthService.login(email, password);
       setLoading(false);
-    }, 2000);
+
+      console.log(response);
+
+      //! check if user is admin then push
+      router.push("/simuladores");
+    } catch (e) {
+      setEmail("");
+      setPassword("");
+
+      console.log(e);
+    }
   }
 
   return (
