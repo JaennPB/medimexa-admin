@@ -5,6 +5,9 @@ import { useRouter } from "next/navigation";
 import logo from "../../assets/logo.png";
 import AuthService from "../app/services/auth";
 
+import { useAppDispatch } from "@/redux/hooks";
+import { addUser } from "@/redux/slices/userSlice";
+
 function LoginCard() {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -13,6 +16,7 @@ function LoginCard() {
   const [loading, setLoading] = useState<boolean>(false);
 
   const router = useRouter();
+  const dispatch = useAppDispatch();
 
   async function loginHandler() {
     if (!email || !password) {
@@ -28,12 +32,14 @@ function LoginCard() {
     try {
       setLoading(true);
       const response = await AuthService.login(email, password);
-      setLoading(false);
 
       console.log(response);
 
       //! check if user is admin then push
+      dispatch(addUser({ token: "abcd", username: "abcd", email: "abcd" }));
       router.push("/simuladores");
+
+      setLoading(false);
     } catch (e) {
       setEmail("");
       setPassword("");
