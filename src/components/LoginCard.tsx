@@ -19,32 +19,35 @@ function LoginCard() {
   const dispatch = useAppDispatch();
 
   async function loginHandler() {
-    if (!email || !password) {
-      setError(true);
-
-      setTimeout(() => {
-        setError(false);
-      }, 2000);
-
-      return;
-    }
-
     try {
+      if (!email || !password) {
+        setError(true);
+
+        setTimeout(() => {
+          setError(false);
+        }, 2000);
+
+        return;
+      }
+
       setLoading(true);
       const response = await AuthService.login(email, password);
-
       console.log(response);
 
-      //! check if user is admin then push
       dispatch(addUser({ token: "abcd", username: "abcd", email: "abcd" }));
       router.push("/simuladores");
 
       setLoading(false);
     } catch (e) {
+      console.log(e);
       setEmail("");
       setPassword("");
 
-      console.log(e);
+      setError(true);
+
+      setTimeout(() => {
+        setError(false);
+      }, 2000);
     }
   }
 
