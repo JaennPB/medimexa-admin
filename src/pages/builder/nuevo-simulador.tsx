@@ -13,7 +13,7 @@ export default function nuevoSimulador({}: Props) {
         <div className="p-6">
           <div className="card bg-base-100 shadow-xl h-full">
             <div className="card-body">
-              <p className="mb-10 text-xl font-bold text-centerr">
+              <p className="mb-10 text-xl font-bold text-center">
                 Simuladores ENARM
               </p>
               <InputComponent label="Pregunta" />
