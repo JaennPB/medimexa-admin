@@ -11,9 +11,11 @@ export default function nuevoSimulador({}: Props) {
       <DrawerContent>
         <NavBar isBuilder />
         <div className="p-6">
-          <div className="card bg-base-100 shadow-xl h-full font-bold text-center">
+          <div className="card bg-base-100 shadow-xl h-full">
             <div className="card-body">
-              <span className="mb-10 text-xl">Simuladores ENARM</span>
+              <p className="mb-10 text-xl font-bold text-centerr">
+                Simuladores ENARM
+              </p>
               <InputComponent label="Pregunta" />
               <div className="w-[100%]">
                 <div className="flex justify-between">
@@ -53,6 +55,7 @@ export default function nuevoSimulador({}: Props) {
                       name="radio-10"
                       className="radio checked:bg-success"
                       checked
+                      readOnly
                     />
                   </label>
                 </div>
@@ -64,6 +67,7 @@ export default function nuevoSimulador({}: Props) {
                       name="radio-10"
                       className="radio checked:bg-success"
                       checked
+                      readOnly
                     />
                   </label>
                 </div>
@@ -75,6 +79,7 @@ export default function nuevoSimulador({}: Props) {
                       name="radio-10"
                       className="radio checked:bg-success"
                       checked
+                      readOnly
                     />
                   </label>
                 </div>
@@ -86,6 +91,7 @@ export default function nuevoSimulador({}: Props) {
                       name="radio-10"
                       className="radio checked:bg-success"
                       checked
+                      readOnly
                     />
                   </label>
                 </div>
