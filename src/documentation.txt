@@ -1,4 +1,4 @@
-documentation
+// documentation
 
 import React, {useState, useEffect} from 'react';
 import logo from './logo.svg';
@@ -9,7 +9,7 @@ import AuthService from './app/services/auth';
 import StorageService from './app/services/storage';
 
 
----Obtener un modelo
+// ---Obtener un modelo
 userQuery.find('CSIhKMTxD1Dr6LwRUcxh').then((userDb:any)=>{
     userDb.media.all().then((medias:any)=>{
         medias.map(async (media:any)=>{
@@ -19,20 +19,20 @@ userQuery.find('CSIhKMTxD1Dr6LwRUcxh').then((userDb:any)=>{
 })
 
 
----obtener Todos los modelos
+// ---obtener Todos los modelos
 
 userQuery.all().then((users:any)=>{
 	
 
 })
 
----buscar 
+// ---buscar 
 userQuery.where('role_id','==', role.data.id).then((users:any)=>{
 	
 
 })
 
----buscar avanzado
+// ---buscar avanzado
 import {where} from 'firebase/firestore'
 userQuery.whereRaw([
 	where('role_id','==', role.data.id),
@@ -44,8 +44,8 @@ userQuery.whereRaw([
 
 
 
----Crear un modelo
-/* Revisar cada interfaz para saver que data llevaria cada clase */
+// ---Crear un modelo
+// Revisar cada interfaz para saver que data llevaria cada clase
 
 const role:any = new  Role({
    name:'estudiante'
@@ -65,37 +65,34 @@ role.save().then((docRef:any)=>{
 
    user.save()
 
-
 })
 
 
----Update
+// ---Update
 
 
 user.data.name = 'Nuevo nombre';
 user.update();
 
 
---Delete
+// --Delete
 
 
 user.delete();
 
 
 
-
-
----Reactividad
+// ---Reactividad
 
 const [user, setUser] = useState<any>({});
 userQuery.find('CSIhKMTxD1Dr6LwRUcxh').then((userDb:any)=>{
 	setUser(userDb); 
 })
 
- return (<p>{user.data.id}</p>
+ return (<p>{user.data.id}</p>)
 
 
---- Users in realtime
+// --- Users in realtime
 
 qUser.subscribe((todos:any)=>{
 
@@ -103,15 +100,15 @@ qUser.subscribe((todos:any)=>{
 })
 
 
----Login
+// ---Login
  AuthService.login('fvillanueva@gmail.com','password').then(()=>{
    console.log(AuthService.getUser())
  })
 
----Logout
+// ---Logout
  AuthService.logout();
 
----Register
+// ---Register
 
  CREATE NEW User
 
@@ -119,7 +116,7 @@ qUser.subscribe((todos:any)=>{
 
 
 
----Guardar archivo
+// ---Guardar archivo
 
 user.media.save('file', file).then((mediaDb:any)=>{
      
@@ -128,7 +125,7 @@ user.media.save('file', file).then((mediaDb:any)=>{
 })
 
 
---- OBtener archivos
+// --- OBtener archivos
 user.media.all().then((mediasDb:any)=>{
      
 
@@ -137,14 +134,14 @@ user.media.all().then((mediasDb:any)=>{
 
 
 
---- OBtener archivos por tipo
+// --- OBtener archivos por tipo
 user.media.type('file').then((mediasDb:any)=>{
      
 
 })
 
 
---- url del archivos 
+// --- url del archivos 
 user.media.type('file').then(async (mediasDb:any)=>{
 	let media = medias[0];
     let url = await media.getUrl()

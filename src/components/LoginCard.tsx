@@ -34,6 +34,7 @@ function LoginCard() {
       const response = await AuthService.login(email, password);
       console.log(response);
 
+      //! check if user is admin
       dispatch(addUser({ token: "abcd", username: "abcd", email: "abcd" }));
       router.push("/simuladores");
 
