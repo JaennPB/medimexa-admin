@@ -11,8 +11,9 @@ export default function nuevoSimulador({}: Props) {
       <DrawerContent>
         <NavBar isBuilder />
         <div className="p-6">
-          <div className="card bg-base-100 shadow-xl h-full ">
+          <div className="card bg-base-100 shadow-xl h-full font-bold text-center">
             <div className="card-body">
+              <span className="mb-10 text-xl">Simuladores ENARM</span>
               <InputComponent label="Pregunta" />
               <div className="w-[100%]">
                 <div className="flex justify-between">
