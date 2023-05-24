@@ -12,7 +12,10 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
   return (
     <main className={`bg-base-200 h-screen w-screen ${inter.className}`}>
-      <ModalCreateNew description="Más tarde podrás volver para completar, editar o eliminar el quiz." />
+      <ModalCreateNew
+        description="Más tarde podrás volver para completar, editar o eliminar el quiz."
+        id="MEXA"
+      />
       <DrawerContent>
         <NavBar />
         <DashboardCard>

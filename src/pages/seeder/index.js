@@ -9,9 +9,7 @@ export default function Home() {
     <main
       className={`bg-base-200 h-screen flex justify-center items-center ${inter.className}`}
     >
-
-
-    Seeder ejecutados correctamente
+      Seeder ejecutados correctamente
     </main>
   );
 }

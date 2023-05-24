@@ -3,13 +3,13 @@ import React from "react";
 
 import logo from "../../assets/logo.png";
 import avatar from "../../assets/avatar.jpeg";
-import build from "next/dist/build";
 
 interface Props {
   isBuilder?: boolean;
+  noLeftItem?: boolean;
 }
 
-function NavBar({ isBuilder }: Props) {
+function NavBar({ isBuilder, noLeftItem }: Props) {
   return (
     <div className="navbar bg-base-100 h-[7vh]">
       <div className="navbar-start">
@@ -35,7 +35,7 @@ function NavBar({ isBuilder }: Props) {
             </svg>
           </label>
         )}
-        {isBuilder && (
+        {isBuilder && !noLeftItem && (
           <div className="flex flex-row items-center gap-3 ml-3">
             <p>242</p>
             <progress
@@ -44,6 +44,11 @@ function NavBar({ isBuilder }: Props) {
               max="280"
             ></progress>
             <p>280</p>
+          </div>
+        )}
+        {isBuilder && noLeftItem && (
+          <div className="flex flex-row items-center gap-3 ml-3">
+            Preguntas creadas: 12
           </div>
         )}
       </div>
@@ -73,7 +78,9 @@ function NavBar({ isBuilder }: Props) {
           </div>
         )}
         {isBuilder && (
-          <button className="btn btn-warning mr-3">Guardar y salir</button>
+          <label className="btn btn-warning mr-3" htmlFor="my-modal-4">
+            Guardar y salir
+          </label>
         )}
       </div>
     </div>

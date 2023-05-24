@@ -1,13 +1,13 @@
 import DrawerContent from "@/components/DrawerContent";
 import InputComponent from "@/components/InputComponent";
+import ModalSalir from "@/components/ModalSalir";
 import NavBar from "@/components/NavBar";
 import React from "react";
 
-type Props = {};
-
-export default function nuevoSimulador({}: Props) {
+export default function nuevoSimulador() {
   return (
     <main className="bg-base-200 h-screen w-screen">
+      <ModalSalir />
       <DrawerContent>
         <NavBar isBuilder />
         <div className="p-6">

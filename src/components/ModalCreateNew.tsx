@@ -13,6 +13,14 @@ function ModalCreateNew({ description, id }: Props) {
     if (id === "SIM") {
       router.push("/builder/nuevo-simulador");
     }
+
+    if (id === "MEXA") {
+      router.push("/builder/nuevo-mexaquiz");
+    }
+
+    if (id === "FLASH") {
+      router.push("/builder/nuevas-flashcards");
+    }
   }
 
   return (
