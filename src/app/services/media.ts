@@ -39,7 +39,7 @@ class MediaService {
 		const type = (await this.findType(typeName))[0];
 
 
-		return storageService.upload(file).then((snapshot:any)=>{
+		return storageService.upload(file).then(async (snapshot:any)=>{
 
 			const url = snapshot.metadata.fullPath;
 
@@ -51,7 +51,7 @@ class MediaService {
 
 			})
 
-			retirn await media.save();
+			return await media.save();
 
 		});
 	}
