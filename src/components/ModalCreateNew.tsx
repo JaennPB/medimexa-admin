@@ -1,10 +1,28 @@
+import { useRouter } from "next/navigation";
 import React from "react";
 
 interface Props {
   description: string;
+  id: "SIM" | "MEXA" | "FLASH";
 }
 
-function ModalCreateNew({ description }: Props) {
+function ModalCreateNew({ description, id }: Props) {
+  const router = useRouter();
+
+  function navigateToBuilderHandler() {
+    if (id === "SIM") {
+      router.push("/builder/nuevo-simulador");
+    }
+
+    if (id === "MEXA") {
+      router.push("/builder/nuevo-mexaquiz");
+    }
+
+    if (id === "FLASH") {
+      router.push("/builder/nuevas-flashcards");
+    }
+  }
+
   return (
     <>
       <input type="checkbox" id="my-modal-1" className="modal-toggle" />
@@ -16,7 +34,11 @@ function ModalCreateNew({ description }: Props) {
             <label htmlFor="my-modal-1" className="btn w-32">
               No
             </label>
-            <label htmlFor="my-modal-1" className="btn w-32 btn-primary">
+            <label
+              htmlFor="my-modal-1"
+              className="btn w-32 btn-primary"
+              onClick={navigateToBuilderHandler}
+            >
               Sí
             </label>
           </div>
