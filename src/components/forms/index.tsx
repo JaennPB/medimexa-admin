@@ -150,7 +150,6 @@ const Builder=({fields,message,onClick, confirm=true, validations=false})=> {
             let formInput=<input 
               type={type} 
               readOnly={readonly}  
-              disable={readonly} 
               min={fieldOrEmpty(field.min)} 
               key={'input'+field.name}
               placeholder={fieldOrEmpty(field.placeholder)+ checkReadOnly(field) }

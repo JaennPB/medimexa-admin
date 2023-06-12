@@ -23,15 +23,16 @@ function LoginCard() {
 
 
       setLoading(true);
-      const response = await AuthService.login(email, password);
+      const response = await AuthService.login(data.email, data.password);
       console.log(response);
 
       //! check if user is admin
-      dispatch(addUser({ token: "abcd", username: "abcd", email: "abcd" }));
+      dispatch(addUser({ token: response.user.accessToken,  email: response.user.email }));
       router.push("/simuladores");
 
       setLoading(false);
     } catch (e) {
+      console.log(e)
       setLoading(false);
 
       if(e.code == "auth/user-not-found") {

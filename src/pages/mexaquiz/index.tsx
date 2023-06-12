@@ -4,12 +4,15 @@ import ModalCreateNew from "@/components/ModalCreateNew";
 import NavBar from "@/components/NavBar";
 import NewItemCard from "@/components/NewItemCard";
 import Table from "@/components/Table";
-
 import { Inter } from "next/font/google";
-
 const inter = Inter({ subsets: ["latin"] });
+import checkUser from '@/components/login/checkUser';
+
 
 export default function Home() {
+
+  checkUser();
+
   return (
     <main className={`bg-base-200 h-screen w-screen ${inter.className}`}>
       <ModalCreateNew

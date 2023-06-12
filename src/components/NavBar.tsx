@@ -3,6 +3,11 @@ import React from "react";
 
 import logo from "../../assets/logo.png";
 import avatar from "../../assets/avatar.jpeg";
+import {useRouter } from "next/navigation";
+import AuthService from '@/firebase/services/auth';
+import { useAppDispatch } from "@/redux/hooks";
+import { signOut } from "@/redux/slices/userSlice";
+
 
 interface Props {
   isBuilder?: boolean;
@@ -10,6 +15,20 @@ interface Props {
 }
 
 function NavBar({ isBuilder, noLeftItem }: Props) {
+
+
+  const router = useRouter();
+  const dispatch = useAppDispatch();
+
+  const logout = ()=>{
+
+      AuthService.signOut()
+      dispatch(signOut())
+      router.push('/login')
+
+
+
+  }
   return (
     <div className="navbar bg-base-100 h-[7vh]">
       <div className="navbar-start">
@@ -72,7 +91,7 @@ function NavBar({ isBuilder, noLeftItem }: Props) {
                 <a>Ajustes</a>
               </li>
               <li>
-                <a>Cerrar sesión</a>
+                <a onClick={logout}>Cerrar sesión</a>
               </li>
             </ul>
           </div>

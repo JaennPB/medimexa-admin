@@ -1,11 +1,13 @@
 import {auth} from '../config/firebase';
+
 import { 
 	createUserWithEmailAndPassword,
 	signInWithEmailAndPassword,
 	sendPasswordResetEmail,
 	updatePassword,
 	deleteUser,
-	signOut
+	signOut,
+	onAuthStateChanged
 } from "firebase/auth";
 
 
@@ -14,7 +16,6 @@ class AuthService {
 	user:any;
 
 	constructor() {
-		this.user =auth.currentUser;
 	}
 
 	register(email:string, password:string) {
@@ -23,12 +24,12 @@ class AuthService {
 
 	login(email:string, password:string) {
 		return signInWithEmailAndPassword(auth, email, password).then((userCredential:any)=>{
-			localStorage.setItem('user', JSON.stringify(userCredential.user));
+			return userCredential;
 		})
 	}
 
 	signOut() {
-		return signOut(auth)
+		signOut(auth)
 	}
 
 	resetPassword (email:string) {
@@ -36,16 +37,23 @@ class AuthService {
 	}
 
 	changePassword (password:string) {
-		return updatePassword(this.user, password)
+		return updatePassword(auth.currentUser, password)
 	}
 
 	deleteAccount () {
-		return deleteUser(this.user);
+		return deleteUser(auth.currentUser);
 	}
 
 	getUser() {
-		return this.user
+		return auth.currentUser;
 	}
+
+
+	onAuth(fn) {
+		onAuthStateChanged(auth,fn);
+	}
+
+
 
 
 }
