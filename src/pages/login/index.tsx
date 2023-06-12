@@ -1,4 +1,4 @@
-import LoginCard from "@/components/LoginCard";
+import LoginCard from "./LoginCard";
 
 import { Inter } from "next/font/google";
 
