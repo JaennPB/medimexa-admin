@@ -92,6 +92,10 @@ class Query {
   private mapDoc = (doc: any) => {
     return new (<any>this.model)({ ...doc.data(), id: doc.id });
   };
+
+  toArray=(res)=>{
+      return res.map(item=>item.data)
+  }
 }
 
 export default Query;

@@ -54,6 +54,7 @@ function LoginCard() {
       'name':'password',
       placeholder:'Password',
       required:true, 
+      type:"password"
     },
 
   ]

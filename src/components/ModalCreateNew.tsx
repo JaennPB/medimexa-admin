@@ -3,7 +3,7 @@ import React from "react";
 
 interface Props {
   description: string;
-  id: "SIM" | "MEXA" | "FLASH";
+  id: "SIM" | "MEXA" | "FLASH" | "USER";
 }
 
 function ModalCreateNew({ description, id }: Props) {
@@ -20,6 +20,10 @@ function ModalCreateNew({ description, id }: Props) {
 
     if (id === "FLASH") {
       router.push("/builder/nuevas-flashcards");
+    }    
+
+    if (id === "USER") {
+      router.push("/usuarios/nuevo");
     }
   }
 

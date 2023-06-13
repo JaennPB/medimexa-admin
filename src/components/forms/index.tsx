@@ -40,6 +40,8 @@ const Builder=({fields,message,onClick, confirm=true, validations=false})=> {
           field.noValid=true;
           invalid=true;
           field.noValidMessage = 'Es requerido';
+        } else {
+          field.noValid=false;
         }
       }
     }
@@ -110,7 +112,7 @@ const Builder=({fields,message,onClick, confirm=true, validations=false})=> {
 
 
 
-  const checkReadOnly = (field) =>  field.readonly? ' (No se puede editar)' : ' (Opcional)';
+  const checkReadOnly = (field) =>  field.readonly? ' (No se puede editar)' : (field.required ? '' : 'opcional');
   const fieldOrEmpty = (field, empty='') => field || empty;
   const trueOrFalse = (field) => {
     if (field) {
@@ -142,6 +144,10 @@ const Builder=({fields,message,onClick, confirm=true, validations=false})=> {
               type="number"
             } 
 
+            if(field.password) {
+              type="password"
+            } 
+
             if(data[field.name]==null)
               return null;
 
@@ -159,6 +165,25 @@ const Builder=({fields,message,onClick, confirm=true, validations=false})=> {
               onChange={handleChange}
               className={"input input-bordered input-primary w-full max-w-xs mb-6"+ field.className ||'' }
             />
+
+
+            if(field.options) {
+              formInput= <select 
+              type={type} 
+              readOnly={readonly}  
+              min={fieldOrEmpty(field.min)} 
+              key={'input'+field.name}
+              placeholder={fieldOrEmpty(field.placeholder)+ checkReadOnly(field) }
+              name={field.name}
+              defaultValue={field.defaultValue || '' }
+              value={data[name]}
+              onChange={handleChange}
+              className={"input input-bordered input-primary w-full max-w-xs mb-6"+ field.className ||'' }
+            >
+            <option disabled>--Elige una opcion--</option>
+            {field.options}
+            </select>
+            }
 
 
 

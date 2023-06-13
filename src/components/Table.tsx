@@ -1,72 +1,64 @@
-import React from "react";
-
-const DUMY_DATA = [
-  "ENARM_1",
-  "ENARM_2",
-  "ENARM_3",
-  "ENARM_4",
-  "ENARM_5",
-  "ENARM_6",
-  "ENARM_7",
-  "ENARM_8",
-];
+import React , {useState, useEffect} from "react";
 
 interface Props {
   description: string;
-  hasCategory?: boolean;
+  columns: Any,
+  data:Array,
+
 }
 
-function Table({ description, hasCategory }: Props) {
+function Table({ description, columns, data}) {
+
+
+  const [thead , setThead] = useState([]);
+  const [rows , setRows] = useState([]);
+
+
+  useEffect(()=>{
+
+    let dataMapped = data.map(columns);
+
+    let heads = [];
+    for(let k in dataMapped[0]) {
+      heads.push({
+        key: k.toString().replaceAll(' ','_'),
+        name: k.toString().toUpperCase().replaceAll('_',' '),
+      })
+    }
+
+    setThead(heads);
+    setRows(dataMapped);
+
+  },[data, columns])
+
+
+
+const renderTable=()=>{
+
+  const _rows = rows.map((row,index) => (
+        <tr  key={'tbody-tr-'+index}>
+        {
+            thead.map((column)=>(<td key={'tbody-tr-td-'+column.key}>{row[column.key]}</td>))
+        }
+        </tr>
+    ))
+
+    if (_rows.lengh<1) {
+        _rows.push(<Tr><Td>No hay informacion</Td></Tr>)
+    }
+
+    return _rows;
+}
   return (
-    <div className="overflow-x-auto mt-6 h-auto max-h-[39rem]">
+    <div className="overflow-x-auto mt-1 h-auto max-h-[39rem]">
       <table className="table w-full">
         <thead>
-          <tr className="bg-primary">
-            <th className="text-center bg-primary text-primary-content">
-              Numero
-            </th>
-            <th className="text-center bg-primary text-primary-content">
-              Nombre
-            </th>
-            <th className="text-center bg-primary text-primary-content">
-              Creado
-            </th>
-            <th className="text-center bg-primary text-primary-content">
-              {description}
-            </th>
-            <th className="text-center bg-primary text-primary-content">ID</th>
-            {hasCategory && (
-              <th className="text-center bg-primary text-primary-content">
-                Categoría
-              </th>
-            )}
-            <th className="text-center bg-primary text-primary-content">
-              Acciónes
-            </th>
+         <tr className="bg-primary">
+            {thead.map(column => <th  className="text-center bg-primary text-primary-content" onClick={()=>makeOrder(column.key)} key={'thead-tr-'+column.key}>{column.name}</th>)}
           </tr>
         </thead>
         <tbody>
-          {DUMY_DATA.map((item, index) => (
-            <tr key={index}>
-              <th className="text-center w-10">{index + 1}</th>
-              <td className="text-center w-80">{item}</td>
-              <td className="text-center w-80">05/12/23</td>
-              <td className="text-center w-80">120/280</td>
-              <td className="text-center w-80">ID-12341354535</td>
-              {hasCategory && <td className="text-center w-80">Cirugía</td>}
-              <td className="text-center w-80">
-                <label
-                  className="btn btn-secondary btn-wide"
-                  htmlFor="my-modal-3"
-                >
-                  Editar
-                </label>
-                <label className="btn btn-accent ml-6" htmlFor="my-modal-2">
-                  Borrar
-                </label>
-              </td>
-            </tr>
-          ))}
+          {renderTable()}
         </tbody>
       </table>
     </div>

@@ -17,8 +17,12 @@ function DrawerContent({ children }: Props) {
             <span>Menú Administrador</span>
           </li>
           <li>
-            <Link href="/simuladores">Simuladores ENARM</Link>
+            <Link href="/usuarios">Usuarios</Link>
           </li>
+          <div className="divider mt-1 mb-1"></div>
+          <li>
+            <Link href="/simuladores">Simuladores ENARM</Link>
+          </li>          
           <div className="divider mt-1 mb-1"></div>
           <li>
             <Link href="/mexaquiz">Mexaquiz</Link>
