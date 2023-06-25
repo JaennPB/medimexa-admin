@@ -19,7 +19,7 @@ export default function Home() {
         <NavBar />
         <DashboardCard>
           <NewItemCard title="Flashcards" description="Nueva Baraja" />
-          <Table description="Barajas" hasCategory />
+          {/*<Table description="Barajas"  />*/}
         </DashboardCard>
       </DrawerContent>
     </main>

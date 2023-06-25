@@ -15,10 +15,10 @@ const firebaseConfig = {
 
 // Initialize Firebase
 
-let app = null;
-let db = null;
-let auth = null;
-let storage = null;
+let app:any = null;
+let db:any = null;
+let auth:any = null;
+let storage:any = null;
 
 
 if (getApps().length < 1) {

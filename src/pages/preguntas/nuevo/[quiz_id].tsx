@@ -20,12 +20,12 @@ export default function Home() {
 
   const  quiz_id  = router.query.quiz_id;
 
-  const [fields, setFields] = useState([])
-  const [questions, setQuestions] = useState([]);
+  const [fields, setFields] = useState<any>([])
+  const [questions, setQuestions] = useState<any>([]);
 
   useEffect(()=>{
     quiz_id && questionQuery.where('quiz_id','==', quiz_id).then(questionQuery.toArray).then(setQuestions);
-  },[])
+  },[quiz_id])
 
 
   useEffect(()=>{
@@ -43,13 +43,13 @@ export default function Home() {
     {
       name:'optional',
       placeholder:"Opcional",
-      options : [<option value={1}>Si</option>,<option value={0}>No</option>],
+      options : [<option key={0} value={1}>Si</option>,<option key={1} value={0}>No</option>],
       required:true,
     },     
     {
       name:'question_id',
       placeholder:"Pregunta padre",
-      options : questions.map(question=><option value={question.id}>{question.name}</option>),
+      options : questions.map((question:any)=><option key={0} value={question.id}>{question.name}</option>),
     },
     {
       name:'options',
@@ -68,7 +68,7 @@ export default function Home() {
   },[questions]);
 
 
-  const saveQuestion=(data,setLoading)=>{
+  const saveQuestion=(data:any,setLoading:any)=>{
 
       data.quiz_id= quiz_id;
       const user = new Question(data)

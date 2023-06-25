@@ -22,8 +22,8 @@ export default function Home() {
   const {type} = router.query;
 
 
-  const [quizType, setQuizType] = useState({});
-  const [categories, setCategories] = useState([]);
+  const [quizType, setQuizType] = useState<any>({});
+  const [categories, setCategories] = useState<any>([]);
 
   useEffect(()=>{
     type && quizTypeQuery.where('name','==',type).then(quizTypeQuery.first).then(setQuizType)
@@ -31,7 +31,7 @@ export default function Home() {
   },[type])
 
 
-  const [fields, setFields] = useState([])
+  const [fields, setFields] = useState<any>([])
 
   useEffect(()=>{
 
@@ -51,16 +51,16 @@ export default function Home() {
       name:'category_id',
       placeholder:"Categoria",
       required:true,
-      options: categories.map(role=><option value={role.id}>{role.name}</option>)
+      options: categories.map((role:any,index:number)=><option key={index} value={role.id}>{role.name}</option>)
     },
     ])
 
   },[categories]);
 
 
-  const saveQuiz=(data,setLoading)=>{
+  const saveQuiz=(data:any,setLoading:any)=>{
 
-    AuthService.onAuth((user)=>{
+    AuthService.onAuth((user:any)=>{
       if(user){
         data.created_by = user.uid
         data.type_id= quizType.data.id;

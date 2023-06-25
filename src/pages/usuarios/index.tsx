@@ -16,7 +16,7 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
 
 
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<any>([]);
 
 
   useEffect(()=>{
@@ -25,7 +25,7 @@ export default function Home() {
 
   },[])
 
-  const columns = (row)=>{
+  const columns = (row:any)=>{
 
     console.log(Edit)
 
@@ -41,6 +41,7 @@ export default function Home() {
   return (
     <main className={`bg-base-200 h-screen w-screen ${inter.className}`}>
       <ModalCreateNew
+      description="Usuarios"
         path="usuarios/nuevo"
       />
       <ModalDelete />

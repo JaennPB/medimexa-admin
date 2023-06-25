@@ -17,8 +17,8 @@ export default function Home() {
 
   const router = useRouter();
 
-  const [fields, setFields] = useState([])
-  const [categories, setCategories] = useState([]);
+  const [fields, setFields] = useState<any>([])
+  const [categories, setCategories] = useState<any>([]);
 
   useEffect(()=>{
     categoryQuery.all().then(categoryQuery.toArray).then(setCategories);
@@ -28,7 +28,7 @@ export default function Home() {
 
   useEffect(()=>{
 
-    let cats= categories.map(role=><option value={role.id}>{role.name}</option>);
+    let cats= categories.map((role:any, index:number)=><option key={index} value={role.id}>{role.name}</option>);
 
     console.log(cats);
 
@@ -53,7 +53,7 @@ export default function Home() {
   },[categories]);
 
 
-  const saveCategory=(data,setLoading)=>{
+  const saveCategory=(data:any,setLoading:any)=>{
 
       const category = new Category(data)
 

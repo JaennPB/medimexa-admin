@@ -18,9 +18,9 @@ export default function Home() {
 
 
 
-  const [data, setData] = useState([]);
-  const [quizType, setQuizType] = useState({});
-  const [quizes, setQuizes] = useState([]);
+  const [data, setData] = useState<any>([]);
+  const [quizType, setQuizType] = useState<any>({});
+  const [quizes, setQuizes] = useState<any>([]);
 
   useEffect(()=>{
 
@@ -33,7 +33,7 @@ export default function Home() {
     .then(setData)
   },[quizType])
 
-  const columns = (row, model)=>{
+  const columns = (row:any, model:any)=>{
 
     return {
       nombre:row.name,

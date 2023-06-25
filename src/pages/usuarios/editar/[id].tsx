@@ -20,9 +20,9 @@ export default function Home() {
 
   const  id  = router.query.id;
 
-  const [fields, setFields] = useState([])
-  const [roles, setRoles] = useState([]);
-  const [user, setUser] = useState({});
+  const [fields, setFields] = useState<any>([])
+  const [roles, setRoles] = useState<any>([]);
+  const [user, setUser] = useState<any>({});
   useEffect(()=>{
     roleQuery.all().then(roleQuery.toArray).then(setRoles);
   },[])
@@ -56,7 +56,7 @@ export default function Home() {
       name:'role_id',
       placeholder:"rol",
       required:true,
-      options : roles.map(role=><option selected={user.data?.role_id===role.id ? true : false} value={role.id}>{role.name}</option>),
+      options : roles.map((role:any,index:number)=><option key={index} selected={user.data?.role_id===role.id ? true : false} value={role.id}>{role.name}</option>),
       defaultValue:user.data?.role_id
     }
     ])
@@ -64,7 +64,7 @@ export default function Home() {
   },[roles, user]);
 
 
-  const saveUser=(data,setLoading)=>{
+  const saveUser=(data:any,setLoading:any)=>{
 
       user.data.name = data.name;
       user.data.lastname = data.lastname;

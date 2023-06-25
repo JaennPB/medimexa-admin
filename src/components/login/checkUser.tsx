@@ -1,7 +1,7 @@
 import {useRouter } from "next/navigation";
 import {useAppSelector} from '@/redux/hooks';
 
-export default function CheckLogin (login=true) {
+export default function CheckLogin (login:boolean=true) {
 
   const router = useRouter();
   const user  = useAppSelector(state=>state.user);

@@ -16,14 +16,14 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
 
 
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<any>([]);
 
 
   useEffect(()=>{
     categoryQuery.all().then(categoryQuery.toArray).then(setData)
   },[])
 
-  const columns = (row)=>{
+  const columns = (row:any)=>{
 
     console.log(Edit)
 

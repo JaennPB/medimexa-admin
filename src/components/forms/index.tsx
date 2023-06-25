@@ -1,9 +1,17 @@
 import React, {useState, useEffect, useRef} from "react"
 import {toast} from 'react-toastify';
 
-const Builder=({fields,message,onClick, confirm=true, labels=true, validations=false})=> {
+type props = {
+  fields:any,
+  onClick:any,
+  confirm?:boolean,
+  labels?:boolean,
+  validations?:any
+}
+
+const Builder=({fields,onClick, confirm=true, labels=true, validations=false}: props)=> {
     
-  let initialState=useRef({});
+  let initialState=useRef<any>({});
 
   const loadInitialState=()=>{
       let tempFields= initialState.current;
@@ -15,9 +23,9 @@ const Builder=({fields,message,onClick, confirm=true, labels=true, validations=f
 
   loadInitialState();
 
-  const [data, setData] = useState(initialState.current);
-  const [inputs, setInputs] = useState(fields);
-  const [loading, setLoading] = useState(false);
+  const [data, setData] = useState<any>(initialState.current);
+  const [inputs, setInputs] = useState<any>(fields);
+  const [loading, setLoading] = useState<any>(false);
 
 
   useEffect(()=>{
@@ -26,14 +34,14 @@ const Builder=({fields,message,onClick, confirm=true, labels=true, validations=f
   },[fields, initialState]);
 
 
-  const handleChange = (e)=>{
+  const handleChange = (e: any)=>{
     setData({
       ...data,
       [e.target.name]: e.target.value
     })
   }
 
-  const checkRequired=(field,invalid)=>{
+  const checkRequired=(field:any,invalid: boolean)=>{
     if(field.required){
       let typeofname =(typeof data[field.name]) ;
       if(typeofname == 'string' || typeofname=='number'){
@@ -57,7 +65,7 @@ const Builder=({fields,message,onClick, confirm=true, labels=true, validations=f
     return {field, invalid};
   }
 
-  const checkValidations = (field, invalid) =>{
+  const checkValidations = (field:any, invalid:boolean) =>{
     if (validations) {
       const test = validations[field.name] || false;
       if (test) {
@@ -76,7 +84,7 @@ const Builder=({fields,message,onClick, confirm=true, labels=true, validations=f
 
 
 
-    let newIinputs =inputs.map(field=>{
+    let newIinputs =inputs.map((field:any)=>{
 
       let result = checkRequired(field, invalid);
       field = result.field;
@@ -96,7 +104,7 @@ const Builder=({fields,message,onClick, confirm=true, labels=true, validations=f
       setInputs(newIinputs);
     }
     else{
-      let _data = {};
+      let _data = Object();
 
       for (let key in data) {
         if(data[key]!=="") {
@@ -110,8 +118,8 @@ const Builder=({fields,message,onClick, confirm=true, labels=true, validations=f
 
   }
 
-  const setFile = (e, field)=>{
-    let _data = {target:{}};
+  const setFile = (e:any, field:any)=>{
+    let _data = {target:{name:'',value:''}};
     _data.target.name = field.name;
     _data.target.value = e.target.files[0];
     handleChange(_data);
@@ -121,9 +129,9 @@ const Builder=({fields,message,onClick, confirm=true, labels=true, validations=f
 
 
 
-  const checkReadOnly = (field) =>  field.readonly? ' (No se puede editar)' : (field.required ? '' : ' (opcional)');
-  const fieldOrEmpty = (field, empty='') => field || empty;
-  const trueOrFalse = (field) => {
+  const checkReadOnly = (field:any) =>  field.readonly? ' (No se puede editar)' : (field.required ? '' : ' (opcional)');
+  const fieldOrEmpty = (field:any, empty:string='') => field || empty;
+  const trueOrFalse = (field:any) => {
     if (field) {
       return parseInt(field);
     }
@@ -132,7 +140,7 @@ const Builder=({fields,message,onClick, confirm=true, labels=true, validations=f
   }
 
 
-  const handleOptionsChange = (option, field, e) =>{
+  const handleOptionsChange = (option:string, field:any, e:any) =>{
     let options = data[field.name] || {};
 
     if(e.target.value.trim()==""){
@@ -147,7 +155,7 @@ const Builder=({fields,message,onClick, confirm=true, labels=true, validations=f
   }
 
 
-  const setDefaultValue = (field, option) =>{
+  const setDefaultValue = (field:any, option:string) =>{
     let val ='';
     if(field.defaultValue){
       val= field.defaultValue[option] ||''
@@ -158,7 +166,7 @@ const Builder=({fields,message,onClick, confirm=true, labels=true, validations=f
     return (
       <>
         {
-          inputs.map(field=>{
+          inputs.map((field:any)=>{
             const { name }= field;
 
             let readonly = false;
@@ -199,9 +207,6 @@ const Builder=({fields,message,onClick, confirm=true, labels=true, validations=f
 
             if(field.options) {
               formInput= <select 
-              type={type} 
-              readOnly={readonly}  
-              min={fieldOrEmpty(field.min)} 
               key={'input'+field.name}
               placeholder={fieldOrEmpty(field.placeholder)+ checkReadOnly(field) }
               name={field.name}
@@ -218,10 +223,8 @@ const Builder=({fields,message,onClick, confirm=true, labels=true, validations=f
 
             if(field.textarea) {
                formInput= <textarea 
-                type={type} 
                 rows={6}
                 readOnly={readonly}  
-                min={fieldOrEmpty(field.min)} 
                 key={'input'+field.name}
                 placeholder={fieldOrEmpty(field.placeholder)+ checkReadOnly(field) }
                 name={field.name}

@@ -23,7 +23,7 @@ export default function Home() {
 
   const  quiz_id  = router.query.quiz_id;
 
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<any>([]);
 
 
   useEffect(()=>{
@@ -31,7 +31,7 @@ export default function Home() {
   },[quiz_id])
 
 
-  const columns = (row,model)=>{
+  const columns = (row:any,model:any)=>{
 
     return {
       pregunta:row.name,
@@ -48,7 +48,7 @@ export default function Home() {
     <main className={`bg-base-200 h-screen w-screen ${inter.className}`}>
       <ModalCreateNew
         description="Crear nueva pregunta."
-        path={quiz_id && "/preguntas/nuevo/"+quiz_id}
+        path={quiz_id ? "/preguntas/nuevo/"+quiz_id : ''}
       />
       <DrawerContent>
         <NavBar />

@@ -2,9 +2,12 @@ import React from "react";
 import {useRouter} from 'next/navigation';
 import {toast} from 'react-toastify'
 
+type EditProps = {
+  path:string,
+  title?:string
+}
 
-
-export const Edit =({path, title="Editar"})=>{
+export const Edit =({path, title="Editar"}:EditProps)=>{
   const route = useRouter()
 
   return <span
@@ -16,12 +19,17 @@ export const Edit =({path, title="Editar"})=>{
   
 }
 
+type DeleteProps = {
+  model:any,
+  data:any,
+  setData:any
+}
 
-export const Delete=({model, data, setData})=>{
+export const Delete=({model, data, setData}: DeleteProps)=>{
 
   const deleteButton =()=>{
-    model.delete().then(res=>{
-      setData(data.filter(item=>model.data.id!=item.data.id))
+    model.delete().then((res:any)=>{
+      setData(data.filter((item:any)=>model.data.id!=item.data.id))
       toast.success("Elemento borrado correctamente")
 
     })

@@ -15,7 +15,7 @@ function LoginCard() {
   const router = useRouter();
   const dispatch = useAppDispatch();
 
-  async function loginHandler(data, setLoading) {
+  async function loginHandler(data:any, setLoading:any) {
 
     console.log(data);
 
@@ -27,11 +27,11 @@ function LoginCard() {
       console.log(response);
 
       //! check if user is admin
-      dispatch(addUser({ token: response.user.accessToken,  email: response.user.email }));
+      dispatch(addUser({ token: response.user.accessToken,  email: response.user.email, id:response.user.id }));
       router.push("/simuladores");
 
       setLoading(false);
-    } catch (e) {
+    } catch (e:any) {
       console.log(e)
       setLoading(false);
 

@@ -49,7 +49,7 @@ class AuthService {
 	}
 
 
-	onAuth(fn) {
+	onAuth(fn:any) {
 		onAuthStateChanged(auth,fn);
 	}
 

@@ -3,7 +3,7 @@ import React from "react";
 
 interface Props {
   description: string;
-  id: "SIM" | "MEXA" | "FLASH" | "USER";
+  path:string
 }
 
 function ModalCreateNew({ description, path }: Props) {

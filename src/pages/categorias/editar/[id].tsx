@@ -19,9 +19,9 @@ export default function Home() {
 
 
 
-  const [category, setCategory] = useState({})
-  const [fields, setFields] = useState([])
-  const [categories, setCategories] = useState([]);
+  const [category, setCategory] = useState<any>({})
+  const [fields, setFields] = useState<any>([])
+  const [categories, setCategories] = useState<any>([]);
 
   useEffect(()=>{
     id && categoryQuery.find(id).then(setCategory)
@@ -36,7 +36,7 @@ export default function Home() {
 
   useEffect(()=>{
 
-    let cats= categories.map(role=><option key={role.id} value={role.id}>{role.name}</option>);
+    let cats= categories.map((role:any)=><option key={role.id} value={role.id}>{role.name}</option>);
 
     console.log(cats);
 
@@ -64,7 +64,7 @@ export default function Home() {
   },[categories]);
 
 
-  const updateCategory=(data,setLoading)=>{
+  const updateCategory=(data:any,setLoading:any)=>{
 
       category.data.name = data.name;
       category.data.category_id = data.category_id ?? null;

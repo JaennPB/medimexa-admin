@@ -2,16 +2,16 @@ import React , {useState, useEffect} from "react";
 
 interface Props {
   description: string;
-  columns: Any,
-  data:Array,
+  columns: any,
+  data:any,
+  model?:any
 
 }
 
-function Table({ description, columns, data, model=false}) {
+function Table({ description, columns, data, model=false}: Props) {
 
-
-  const [thead , setThead] = useState([]);
-  const [rows , setRows] = useState([]);
+  const [thead , setThead] = useState<any>([]);
+  const [rows , setRows] = useState<any>([]);
 
 
   useEffect(()=>{
@@ -19,11 +19,11 @@ function Table({ description, columns, data, model=false}) {
     let callback = columns;
 
     if(model) {
-      callback= model=>columns(model.data, model)
+      callback= (model:any)=>columns(model.data, model)
     }
-    let dataMapped =  data? data.map(callback): [];
+    let dataMapped =  data? data.map(callback): Array();
 
-    let heads = [];
+    let heads = Array();
     for(let k in dataMapped[0]) {
       heads.push({
         key: k.toString().replaceAll(' ','_'),
@@ -41,22 +41,22 @@ function Table({ description, columns, data, model=false}) {
     setThead(heads);
     setRows(dataMapped);
 
-  },[data, columns])
+  },[data, columns, model])
 
 
 
 const renderTable=()=>{
 
-  const _rows = rows.map((row,index) => (
+  const _rows = rows.map((row:any,index:number) => (
         <tr  key={'tbody-tr-'+index}>
         {
-            thead.map((column)=>(<td key={'tbody-tr-td-'+column.key}>{row[column.key]}</td>))
+            thead.map((column:any)=>(<td key={'tbody-tr-td-'+column.key}>{row[column.key]}</td>))
         }
         </tr>
     ))
 
     if (_rows.length<1) {
-        _rows.push(<tr><td>No hay informacion</td></tr>)
+        _rows.push(<tr key={0}><td>No hay informacion</td></tr>)
     }
 
     return _rows;
@@ -66,7 +66,7 @@ const renderTable=()=>{
       <table className="table w-full">
         <thead>
          <tr className="bg-primary">
-            {thead.map(column => <th  className="text-center bg-primary text-primary-content" onClick={()=>makeOrder(column.key)} key={'thead-tr-'+column.key}>{column.name}</th>)}
+            {thead.map((column:any) => <th  className="text-center bg-primary text-primary-content" key={'thead-tr-'+column.key}>{column.name}</th>)}
           </tr>
         </thead>
         <tbody>

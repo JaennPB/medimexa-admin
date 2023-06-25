@@ -93,11 +93,11 @@ class Query {
     return new (<any>this.model)({ ...doc.data(), id: doc.id });
   };
 
-  toArray=(res)=>{
-      return res.map(item=>item.data)
+  toArray=(res:any)=>{
+      return res.map((item:any)=>item.data)
   }
 
-  first= (res)=>{
+  first= (res:any)=>{
     return res[0]|| false;
   }
 }

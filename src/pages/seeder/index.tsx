@@ -1,4 +1,3 @@
-import LoginCard from "@/components/LoginCard";
 import Role, {roleQuery} from '@/firebase/models/Role'
 import User from '@/firebase/models/User';
 import QuizType from '@/firebase/models/QuizType';
