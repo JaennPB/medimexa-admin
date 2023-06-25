@@ -29,7 +29,7 @@ export default function Home() {
 
   useEffect(()=>{
 
-    userQuery.find(id).then(setUser)
+    id && userQuery.find(id).then(setUser)
 
   },[id])
 

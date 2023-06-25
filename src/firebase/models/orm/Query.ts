@@ -96,6 +96,10 @@ class Query {
   toArray=(res)=>{
       return res.map(item=>item.data)
   }
+
+  first= (res)=>{
+    return res[0]|| false;
+  }
 }
 
 export default Query;

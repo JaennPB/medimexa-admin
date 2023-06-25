@@ -22,11 +22,15 @@ function DrawerContent({ children }: Props) {
           <div className="divider mt-1 mb-1"></div>
           <li>
             <Link href="/simuladores">Simuladores ENARM</Link>
-          </li>          
-          <div className="divider mt-1 mb-1"></div>
+          </li> 
+          <div className="divider mt-1 mb-1"></div>          
           <li>
             <Link href="/mexaquiz">Mexaquiz</Link>
-          </li>
+          </li> 
+          <div className="divider mt-1 mb-1"></div>
+          <li>
+            <Link href="/categorias">Categorias</Link>
+          </li>          
           <div className="divider mt-1 mb-1"></div>
           <li>
             <Link href="/flashcards">Flashcards</Link>

@@ -12,8 +12,12 @@ export default function CheckLogin ({children}) {
 
   AuthService.onAuth((user)=>{
     if(user){
-      console.log('compracion user', user);
-      dispatch(addUser({ token: user.accessToken,  email: user.email }));      
+      console.log('comparacion user', user);
+      dispatch(addUser({ 
+        token: user.accessToken,
+        email: user.email,
+        id:user.uid
+      }));      
     } 
   })
 

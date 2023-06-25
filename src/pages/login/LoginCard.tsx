@@ -53,8 +53,8 @@ function LoginCard() {
     {
       'name':'password',
       placeholder:'Password',
+      type:'password',
       required:true, 
-      type:"password"
     },
 
   ]
@@ -72,7 +72,7 @@ function LoginCard() {
           <h2 className="card-title mb-6">Admin Login</h2>
 
 
-          <Builder fields={fields} onClick={loginHandler} />
+          <Builder labels={false} fields={fields} onClick={loginHandler} />
 
           
         </div>

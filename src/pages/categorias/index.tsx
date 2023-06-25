@@ -7,7 +7,7 @@ import {Edit} from '@/components/buttons';
 import NavBar from "@/components/NavBar";
 import NewItemCard from "@/components/NewItemCard";
 import Table from "@/components/Table";
-import {userQuery} from '@/firebase/models/User';
+import {categoryQuery} from '@/firebase/models/Category';
 
 import { Inter } from "next/font/google";
 
@@ -20,9 +20,7 @@ export default function Home() {
 
 
   useEffect(()=>{
-
-    userQuery.all().then(userQuery.toArray).then(setData)
-
+    categoryQuery.all().then(categoryQuery.toArray).then(setData)
   },[])
 
   const columns = (row)=>{
@@ -30,28 +28,28 @@ export default function Home() {
     console.log(Edit)
 
     return {
-      id:row.id,
-      nombre:row.name+" "+row.lastname,
-      email:row.email,
+      nombre:row.name,
+      descripcion:row.description,
       _: <div className="text-center w-80">
-            <Edit path={`/usuarios/editar/${row.id}`} />
+            <Edit path={`/categorias/editar/${row.id}`} />
       </div>
     }
   }
   return (
     <main className={`bg-base-200 h-screen w-screen ${inter.className}`}>
       <ModalCreateNew
-        path="usuarios/nuevo"
+        description="Crear nueva categoria."
+        path="categorias/nuevo"
       />
       <ModalDelete />
       <DrawerContent>
         <NavBar />
         <DashboardCard>
           <NewItemCard
-            title="Usuarios"
-            description="Nuevo usuario"
+            title="Categorias"
+            description="Nueva categoria"
           />
-          <Table description="Pregúntas" data={data} columns={columns} />
+          <Table description="Categorias" data={data} columns={columns} />
         </DashboardCard>
       </DrawerContent>
     </main>

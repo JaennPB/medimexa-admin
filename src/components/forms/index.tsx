@@ -1,14 +1,14 @@
 import React, {useState, useEffect, useRef} from "react"
 import {toast} from 'react-toastify';
 
-const Builder=({fields,message,onClick, confirm=true, validations=false})=> {
+const Builder=({fields,message,onClick, confirm=true, labels=true, validations=false})=> {
     
   let initialState=useRef({});
 
   const loadInitialState=()=>{
       let tempFields= initialState.current;
       for(let k in fields){
-      tempFields[fields[k].name]=fields[k].defaultValue?.toString()||''
+      tempFields[fields[k].name]=fields[k].defaultValue ||''
     }
     initialState.current=tempFields;
   }
@@ -35,13 +35,22 @@ const Builder=({fields,message,onClick, confirm=true, validations=false})=> {
 
   const checkRequired=(field,invalid)=>{
     if(field.required){
-      if((typeof data[field.name]) == 'string'){
-        if(data[field.name].trim()===''){
+      let typeofname =(typeof data[field.name]) ;
+      if(typeofname == 'string' || typeofname=='number'){
+        if(data[field.name].toString().trim()===''){
           field.noValid=true;
           invalid=true;
           field.noValidMessage = 'Es requerido';
         } else {
           field.noValid=false;
+        }
+      } else {
+        if(Object.keys(data[field.name]).length) {
+            field.noValid=false;       
+        } else {
+          invalid=true;
+          field.noValid=true;       
+
         }
       }
     }
@@ -112,7 +121,7 @@ const Builder=({fields,message,onClick, confirm=true, validations=false})=> {
 
 
 
-  const checkReadOnly = (field) =>  field.readonly? ' (No se puede editar)' : (field.required ? '' : 'opcional');
+  const checkReadOnly = (field) =>  field.readonly? ' (No se puede editar)' : (field.required ? '' : ' (opcional)');
   const fieldOrEmpty = (field, empty='') => field || empty;
   const trueOrFalse = (field) => {
     if (field) {
@@ -123,7 +132,29 @@ const Builder=({fields,message,onClick, confirm=true, validations=false})=> {
   }
 
 
+  const handleOptionsChange = (option, field, e) =>{
+    let options = data[field.name] || {};
 
+    if(e.target.value.trim()==""){
+      return;
+    }
+    options[option] = e.target.value,
+
+    setData({
+      ...data,
+      [field.name]: options
+    })
+  }
+
+
+  const setDefaultValue = (field, option) =>{
+    let val ='';
+    if(field.defaultValue){
+      val= field.defaultValue[option] ||''
+    }
+
+    return val;
+  }
     return (
       <>
         {
@@ -135,7 +166,7 @@ const Builder=({fields,message,onClick, confirm=true, validations=false})=> {
             if (field.readonly) {
               readonly=true;
             }
-            let type="text";
+            let type= field.type || "text";
 
             if(field.date) {
               type="date"
@@ -144,14 +175,13 @@ const Builder=({fields,message,onClick, confirm=true, validations=false})=> {
               type="number"
             } 
 
+
             if(field.password) {
               type="password"
             } 
 
             if(data[field.name]==null)
               return null;
-
-
 
             let formInput=<input 
               type={type} 
@@ -163,7 +193,7 @@ const Builder=({fields,message,onClick, confirm=true, validations=false})=> {
               defaultValue={field.defaultValue || '' }
               value={data[name]}
               onChange={handleChange}
-              className={"input input-bordered input-primary w-full max-w-xs mb-6"+ field.className ||'' }
+              className={"input input-bordered input-primary w-full mb-6 "+ field.className ||'' }
             />
 
 
@@ -178,21 +208,97 @@ const Builder=({fields,message,onClick, confirm=true, validations=false})=> {
               defaultValue={field.defaultValue || '' }
               value={data[name]}
               onChange={handleChange}
-              className={"input input-bordered input-primary w-full max-w-xs mb-6"+ field.className ||'' }
+              className={"input input-bordered input-primary w-full mb-6 "+ field.className ||'' }
             >
-            <option disabled>--Elige una opcion--</option>
+            <option>{field.placeholder} (Elige una opcion)</option>
             {field.options}
             </select>
             }
 
 
+            if(field.textarea) {
+               formInput= <textarea 
+                type={type} 
+                rows={6}
+                readOnly={readonly}  
+                min={fieldOrEmpty(field.min)} 
+                key={'input'+field.name}
+                placeholder={fieldOrEmpty(field.placeholder)+ checkReadOnly(field) }
+                name={field.name}
+                defaultValue={field.defaultValue || '' }
+                value={data[name]}
+                onChange={handleChange}
+                className={"input input-bordered input-primary w-full mb-6 "+ field.className ||'' }
+            ></textarea>
+                         
+            }
+
 
         
 
-
+            if(field.answers) {
+              formInput = <div className="border-dashed border-2 border-gray-500 p-5">
+                <input 
+                style={{marginBottom:12}}
+                defaultValue={setDefaultValue(field,'a')}
+                type="input" 
+                placeholder="Opcion A"
+                key={'input-opcion-1-'+field.name}
+                onChange={(e)=>handleOptionsChange('a',field,e)}
+                className={"input input-bordered input-primary w-full  mb-6 "+ field.className ||'' }
+              />
+                <input 
+                style={{marginBottom:12}}
+                defaultValue={setDefaultValue(field,'b')}
+                type="input" 
+                placeholder="Opcion B"
+                key={'input-opcion-1-'+field.name}
+                onChange={(e)=>handleOptionsChange('b',field,e)}
+                className={"input input-bordered input-primary w-full  mb-6 "+ field.className ||'' }
+              />
+                <input 
+                style={{marginBottom:12}}
+                defaultValue={setDefaultValue(field,'c')}
+                type="input" 
+                placeholder="Opcion C"
+                key={'input-opcion-1-'+field.name}
+                onChange={(e)=>handleOptionsChange('c',field,e)}
+                className={"input input-bordered input-primary w-full  mb-6 "+ field.className ||'' }
+              />
+                              <input 
+                style={{marginBottom:12}}
+                defaultValue={setDefaultValue(field,'d')}
+                type="input" 
+                placeholder="Opcion D"
+                key={'input-opcion-1-'+field.name}
+                onChange={(e)=>handleOptionsChange('d',field,e)}
+                className={"input input-bordered input-primary w-full  mb-6 "+ field.className ||'' }
+              />
+                              <input 
+                style={{marginBottom:12}}
+                defaultValue={setDefaultValue(field,'e')}
+                type="input" 
+                placeholder="Opcion E"
+                key={'input-opcion-1-'+field.name}
+                onChange={(e)=>handleOptionsChange('e',field,e)}
+                className={"input input-bordered input-primary w-full  mb-6 "+ field.className ||'' }
+              />
+                              <input 
+                style={{marginBottom:12}}
+                defaultValue={setDefaultValue(field,'f')}
+                type="input" 
+                placeholder="Opcion F"
+                key={'input-opcion-1-'+field.name}
+                onChange={(e)=>handleOptionsChange('f',field,e)}
+                className={"input input-bordered input-primary w-full  mb-6 "+ field.className ||'' }
+              />
+            </div>
+          
+            }
 
             return(
                 <>
+                    {labels && <span>{field.placeholder}</span>}
                     {formInput}
                     {field.noValid && <small key={'small'+field.name} style={{color:"red"}}>{field.noValidMessage}</small>}
                   </>

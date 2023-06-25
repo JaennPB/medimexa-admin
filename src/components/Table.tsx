@@ -7,7 +7,7 @@ interface Props {
 
 }
 
-function Table({ description, columns, data}) {
+function Table({ description, columns, data, model=false}) {
 
 
   const [thead , setThead] = useState([]);
@@ -16,13 +16,25 @@ function Table({ description, columns, data}) {
 
   useEffect(()=>{
 
-    let dataMapped = data.map(columns);
+    let callback = columns;
+
+    if(model) {
+      callback= model=>columns(model.data, model)
+    }
+    let dataMapped =  data? data.map(callback): [];
 
     let heads = [];
     for(let k in dataMapped[0]) {
       heads.push({
         key: k.toString().replaceAll(' ','_'),
         name: k.toString().toUpperCase().replaceAll('_',' '),
+      })
+    }
+
+    if(heads.length<1) {
+      heads.push({
+        key:'',
+        name:'',
       })
     }
 
@@ -43,8 +55,8 @@ const renderTable=()=>{
         </tr>
     ))
 
-    if (_rows.lengh<1) {
-        _rows.push(<Tr><Td>No hay informacion</Td></Tr>)
+    if (_rows.length<1) {
+        _rows.push(<tr><td>No hay informacion</td></tr>)
     }
 
     return _rows;

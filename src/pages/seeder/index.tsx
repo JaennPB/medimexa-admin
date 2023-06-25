@@ -1,6 +1,7 @@
 import LoginCard from "@/components/LoginCard";
-import Role, {roleQuery} from '@/app/models/Role'
-import User from '@/app/models/User';
+import Role, {roleQuery} from '@/firebase/models/Role'
+import User from '@/firebase/models/User';
+import QuizType from '@/firebase/models/QuizType';
 
 export default function Home() {
 
@@ -23,6 +24,23 @@ export default function Home() {
     await role.save();
 
     alert('roles completados')
+
+  }
+
+
+  const runQuizType = async ()=>{
+
+    // let quiz = new QuizType({
+    //   name:'mexaquiz',
+    // });
+    // await quiz.save();
+
+     let quiz = new QuizType({
+       name:'enarm',
+     });
+     await quiz.save();
+   
+    alert('quiz type completados')
 
   }
 
@@ -73,6 +91,7 @@ export default function Home() {
 
     <button style={buttonStyle} onClick={runRoles}>Roles </button>
     <button style={buttonStyle} onClick={runUsers}>Usuarios </button>
+    <button style={buttonStyle} onClick={runQuizType}>Tipos de quiz </button>
     </main>
   );
 }

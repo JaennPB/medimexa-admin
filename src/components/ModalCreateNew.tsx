@@ -6,25 +6,13 @@ interface Props {
   id: "SIM" | "MEXA" | "FLASH" | "USER";
 }
 
-function ModalCreateNew({ description, id }: Props) {
+function ModalCreateNew({ description, path }: Props) {
   const router = useRouter();
 
   function navigateToBuilderHandler() {
-    if (id === "SIM") {
-      router.push("/builder/nuevo-simulador");
-    }
 
-    if (id === "MEXA") {
-      router.push("/builder/nuevo-mexaquiz");
-    }
+      router.push(path);
 
-    if (id === "FLASH") {
-      router.push("/builder/nuevas-flashcards");
-    }    
-
-    if (id === "USER") {
-      router.push("/usuarios/nuevo");
-    }
   }
 
   return (

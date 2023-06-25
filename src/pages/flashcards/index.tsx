@@ -13,7 +13,7 @@ export default function Home() {
     <main className={`bg-base-200 h-screen w-screen ${inter.className}`}>
       <ModalCreateNew
         description="Más tarde podrás volver para completar, editar o eliminar la baraja."
-        id="FLASH"
+        path="quiz/nuevo"
       />
       <DrawerContent>
         <NavBar />
