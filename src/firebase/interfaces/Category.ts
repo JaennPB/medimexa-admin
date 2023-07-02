@@ -2,7 +2,6 @@ interface Category {
 	readonly id?:string;
 
 	name:string;
-	description:string;
 	category_id?:string;
 	
 	readonly created_at?:Date;

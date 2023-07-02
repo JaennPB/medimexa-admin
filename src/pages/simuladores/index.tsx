@@ -39,7 +39,7 @@ export default function Home() {
       nombre:row.name,
       _: <div className="text-center w-80">
             <Edit path={`/quiz/editar/${row.id}`} />
-            <Edit path={`/preguntas/${row.id}`} title={"Ver preguntas"}/>
+            <Edit path={`/casos/${row.id}`} title={"Ver casos"}/>
             <Delete model={model} data={data} setData={setData}/>
       </div>
     }

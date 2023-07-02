@@ -24,49 +24,44 @@ export default function Home() {
 
   const [quizType, setQuizType] = useState<any>({});
   const [quiz, setQuiz] = useState<any>({});
-  const [categories, setCategories] = useState<any>([]);
 
 
   useEffect(()=>{
-    id && quizQuery.find(id).then(quizQuery.first).then(setQuiz)
+    id && quizQuery.find(id).then(setQuiz)
   },[id])
 
   useEffect(()=>{
     quizTypeQuery.where('name','==','mexaquiz').then(quizTypeQuery.first).then(setQuizType)
-    categoryQuery.all().then(categoryQuery.toArray).then(setCategories)
   },[])
 
   const [fields, setFields] = useState<any>([])
 
   useEffect(()=>{
 
-
-    console.log(quiz)
-    setFields([
-    {
-      name:'name',
-      placeholder:"nombre",
-      required:true,
-      defaultValue: quiz.data?.name,
-    },      
-    {
-      name:'body',
-      placeholder:"Descripcion larga",
-      required:true,
-      textarea:true,
-      defaultValue: quiz.data?.body,
-    },    
-    {
-      name:'category_id',
-      placeholder:"rol",
-      required:true,
-      options: categories.map((role:any,index:number)=><option key={index} value={role.id}>{role.name}</option>),
-      defaultValue: quiz.data?.category_id,
-
-    },
+    quiz.data?.id && setFields([
+      {
+        name:'name',
+        placeholder:"nombre",
+        required:true,
+        defaultValue: quiz.data?.name,
+      },      
+      {
+        name:'body',
+        placeholder:"Descripcion larga",
+        required:true,
+        textarea:true,
+        defaultValue: quiz.data?.body,
+      },    
+       {
+        name:'category_id',
+        placeholder:"Categoria",
+        required:true,
+        category:true,
+        defaultValue:quiz.data?.category_id
+      },   
     ])
 
-  },[quiz, categories]);
+  },[quiz]);
 
 
   const saveQuiz=(data:any,setLoading:any)=>{

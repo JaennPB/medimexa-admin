@@ -48,14 +48,8 @@ export default function Home() {
       defaultValue: category.data?.name,
     },    
     {
-      name:'description',
-      placeholder:"Descripcion",
-      required:true,
-      defaultValue: category.data?.description,
-    },
-    {
       name:'category_id',
-      placeholder:"rol",
+      placeholder:"Categoria superior",
       options : cats,
       defaultValue: category.data?.category_id || null
     }
@@ -68,12 +62,11 @@ export default function Home() {
 
       category.data.name = data.name;
       category.data.category_id = data.category_id ?? null;
-      category.data.description = data.description;
 
       category.update().then(()=>{
         setLoading(false)
         toast.success("Categoria actualizada correctamente")
-        router.push('/categorias');
+        router.back();
       })
   }
 

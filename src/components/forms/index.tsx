@@ -1,5 +1,6 @@
 import React, {useState, useEffect, useRef} from "react"
 import {toast} from 'react-toastify';
+import SelectCategory from './SelectCategory';
 
 type props = {
   fields:any,
@@ -234,6 +235,16 @@ const Builder=({fields,onClick, confirm=true, labels=true, validations=false}: p
                 className={"input input-bordered input-primary w-full mb-6 "+ field.className ||'' }
             ></textarea>
                          
+            }
+
+
+            if(field.category) {
+              formInput=<SelectCategory 
+                name={field.name}
+                key={'input'+field.name}
+                onChange={handleChange}
+                defaultValue={field.defaultValue || ''}
+              />
             }
 
 

@@ -1,0 +1,49 @@
+[debug] [2023-06-27T01:02:25.782Z] ----------------------------------------------------------------------
+[debug] [2023-06-27T01:02:25.784Z] Command:       /usr/local/bin/firebase /Users/Fernando/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/bin/firebase init hosting
+[debug] [2023-06-27T01:02:25.784Z] CLI Version:   12.4.0
+[debug] [2023-06-27T01:02:25.784Z] Platform:      darwin
+[debug] [2023-06-27T01:02:25.785Z] Node Version:  v16.16.0
+[debug] [2023-06-27T01:02:25.786Z] Time:          Mon Jun 26 2023 20:02:25 GMT-0500 (Central Daylight Time)
+[debug] [2023-06-27T01:02:25.786Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-06-27T01:02:25.886Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-06-27T01:02:25.887Z] > authorizing via signed-in user (medimexa.dev@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  /Users/Fernando/Desktop/medimexa-admin
+
+Before we get started, keep in mind:
+
+  * You are initializing within an existing Firebase project directory
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2023-06-27T01:02:25.893Z] Using project from CLI flag: medimexa-back
+[debug] [2023-06-27T01:02:25.895Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/medimexa-back [none]
+[debug] [2023-06-27T01:02:26.207Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/medimexa-back 200
+[debug] [2023-06-27T01:02:26.210Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/medimexa-back {"projectId":"medimexa-back","projectNumber":"376506424578","displayName":"medimexa","name":"projects/medimexa-back","resources":{"hostingSite":"medimexa-back","storageBucket":"medimexa-back.appspot.com","locationId":"us-central"},"state":"ACTIVE","etag":"1_0534b625-817e-40c7-b63f-b0df558b1d57"}
+[info] i  Using project medimexa-back (medimexa) 
+[info] 
+=== Hosting Setup
+[debug] [2023-06-27T01:02:36.618Z] SyntaxError: Unexpected end of JSON input
+    at JSON.parse (<anonymous>)
+    at findDependency (/Users/Fernando/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/frameworks/utils.js:150:23)
+    at getAstroVersion (/Users/Fernando/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/frameworks/astro/index.js:15:45)
+    at discover (/Users/Fernando/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/frameworks/astro/index.js:20:10)
+    at discover (/Users/Fernando/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/frameworks/index.js:45:38)
+    at async doSetup (/Users/Fernando/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/init/features/hosting/index.js:22:11)
+    at async init (/Users/Fernando/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/init/index.js:37:9)
+[error] 
+[error] Error: An unexpected error has occurred.

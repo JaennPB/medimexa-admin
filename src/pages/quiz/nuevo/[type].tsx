@@ -5,14 +5,13 @@ import NavBar from "@/components/NavBar";
 import {userQuery} from '@/firebase/models/User';
 import { Inter } from "next/font/google";
 import Quiz from '@/firebase/models/Quiz';
-import {categoryQuery} from '@/firebase/models/Category';
 import {quizTypeQuery} from '@/firebase/models/QuizType';
 import Builder from '@/components/forms';
 import {toast} from 'react-toastify';
 import {useRouter} from 'next/router';
 const inter = Inter({ subsets: ["latin"] });
 import AuthService from '@/firebase/services/auth'
-
+import SelectCategory from '@/components/SelectCategory/index';
 
 
 export default function Home() {
@@ -27,7 +26,6 @@ export default function Home() {
 
   useEffect(()=>{
     type && quizTypeQuery.where('name','==',type).then(quizTypeQuery.first).then(setQuizType)
-    type && categoryQuery.all().then(categoryQuery.toArray).then(setCategories)
   },[type])
 
 
@@ -46,13 +44,13 @@ export default function Home() {
       placeholder:"Descripcion larga",
       required:true,
       textarea:true,
-    },    
-    {
+    },
+     {
       name:'category_id',
       placeholder:"Categoria",
       required:true,
-      options: categories.map((role:any,index:number)=><option key={index} value={role.id}>{role.name}</option>)
-    },
+      category:true,
+    },   
     ])
 
   },[categories]);

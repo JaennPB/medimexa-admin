@@ -3,12 +3,11 @@ import DashboardCard from "@/components/DashboardCard";
 import DrawerContent from "@/components/DrawerContent";
 import ModalCreateNew from "@/components/ModalCreateNew";
 import ModalDelete from "@/components/ModalDelete";
-import {Edit} from '@/components/buttons';
 import NavBar from "@/components/NavBar";
 import NewItemCard from "@/components/NewItemCard";
 import Table from "@/components/Table";
 import {categoryQuery} from '@/firebase/models/Category';
-
+import {Edit, Delete} from '@/components/buttons';
 import { Inter } from "next/font/google";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -20,18 +19,19 @@ export default function Home() {
 
 
   useEffect(()=>{
-    categoryQuery.all().then(categoryQuery.toArray).then(setData)
+    categoryQuery.where('category_id','==', null).then(setData)
   },[])
 
-  const columns = (row:any)=>{
+  const columns = (row:any, model)=>{
 
     console.log(Edit)
 
     return {
       nombre:row.name,
-      descripcion:row.description,
       _: <div className="text-center w-80">
             <Edit path={`/categorias/editar/${row.id}`} />
+            <Edit path={`/categorias/${row.id}`} title='Ver subcategorias' />
+            <Delete model={model} data={data} setData={setData} />
       </div>
     }
   }
@@ -49,7 +49,7 @@ export default function Home() {
             title="Categorias"
             description="Nueva categoria"
           />
-          <Table description="Categorias" data={data} columns={columns} />
+          <Table description="Categorias" model={true} data={data} columns={columns} />
         </DashboardCard>
       </DrawerContent>
     </main>
