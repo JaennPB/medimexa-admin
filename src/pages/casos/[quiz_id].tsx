@@ -41,10 +41,10 @@ export default function Home() {
 
 
   const redirect = ()=>{
-    if(quizType.data.name=='mexaquiz'){
+    if(quizType.data?.name=='mexaquiz'){
       return  '/mexaquiz'
     }
-    if(quizType.data.name=='enarm'){
+    if(quizType.data?.name=='enarm'){
       return  '/simuladores'
     }
     return '/'
