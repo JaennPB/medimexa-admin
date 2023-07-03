@@ -27,7 +27,7 @@ export default function Home() {
     id && categoryQuery.where('category_id','==', id).then(setData);
   },[id])
 
-  const columns = (row:any, model)=>{
+  const columns = (row:any, model:any)=>{
 
     console.log(Edit)
 

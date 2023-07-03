@@ -1,8 +1,10 @@
+// @ts-nocheck comment at the top of the file
 import {
   documentId
 } from "firebase/firestore";
 
 class Collect {
+
 
   constructor(items: any) {
     for(let k in items) {

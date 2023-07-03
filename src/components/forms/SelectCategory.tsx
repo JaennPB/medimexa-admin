@@ -26,7 +26,7 @@ function SelectCategory({name, defaultValue, onChange}:props) {
       }).then(setCategories)
   },[])
 
-  const onHandleChange=(e)=>{
+  const onHandleChange=(e:any)=>{
     setValue(e.target.value);
     onChange(e)
   }

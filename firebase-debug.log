@@ -1,49 +1,245 @@
-[debug] [2023-06-27T01:02:25.782Z] ----------------------------------------------------------------------
-[debug] [2023-06-27T01:02:25.784Z] Command:       /usr/local/bin/firebase /Users/Fernando/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/bin/firebase init hosting
-[debug] [2023-06-27T01:02:25.784Z] CLI Version:   12.4.0
-[debug] [2023-06-27T01:02:25.784Z] Platform:      darwin
-[debug] [2023-06-27T01:02:25.785Z] Node Version:  v16.16.0
-[debug] [2023-06-27T01:02:25.786Z] Time:          Mon Jun 26 2023 20:02:25 GMT-0500 (Central Daylight Time)
-[debug] [2023-06-27T01:02:25.786Z] ----------------------------------------------------------------------
+[debug] [2023-07-03T06:12:00.717Z] ----------------------------------------------------------------------
+[debug] [2023-07-03T06:12:00.719Z] Command:       /usr/local/bin/firebase /Users/Fernando/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/bin/firebase deploy
+[debug] [2023-07-03T06:12:00.720Z] CLI Version:   12.4.0
+[debug] [2023-07-03T06:12:00.720Z] Platform:      darwin
+[debug] [2023-07-03T06:12:00.720Z] Node Version:  v16.16.0
+[debug] [2023-07-03T06:12:00.721Z] Time:          Mon Jul 03 2023 01:12:00 GMT-0500 (Central Daylight Time)
+[debug] [2023-07-03T06:12:00.722Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2023-06-27T01:02:25.886Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2023-06-27T01:02:25.887Z] > authorizing via signed-in user (medimexa.dev@gmail.com)
+[debug] [2023-07-03T06:12:00.823Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-07-03T06:12:00.824Z] > authorizing via signed-in user (medimexa.dev@gmail.com)
+[debug] [2023-07-03T06:12:00.824Z] [iam] checking project medimexa-back for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2023-07-03T06:12:00.826Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/medimexa-back:testIamPermissions [none]
+[debug] [2023-07-03T06:12:00.828Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/medimexa-back:testIamPermissions x-goog-quota-user=projects/medimexa-back
+[debug] [2023-07-03T06:12:00.829Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/medimexa-back:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-07-03T06:12:01.303Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/medimexa-back:testIamPermissions 200
+[debug] [2023-07-03T06:12:01.308Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/medimexa-back:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-07-03T06:12:01.310Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/medimexa-back [none]
+[debug] [2023-07-03T06:12:01.601Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/medimexa-back 200
+[debug] [2023-07-03T06:12:01.603Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/medimexa-back {"projectId":"medimexa-back","projectNumber":"376506424578","displayName":"medimexa","name":"projects/medimexa-back","resources":{"hostingSite":"medimexa-back","storageBucket":"medimexa-back.appspot.com","locationId":"us-central"},"state":"ACTIVE","etag":"1_355ae34a-2cfb-4447-8cea-c6c147e854bd"}
+[debug] [2023-07-03T06:12:04.853Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/medimexa-back/sites pageToken=&pageSize=10
+[debug] [2023-07-03T06:12:05.387Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/medimexa-back/sites 200
+[debug] [2023-07-03T06:12:05.390Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/medimexa-back/sites {"sites":[{"name":"projects/medimexa-back/sites/medimexa-back","defaultUrl":"https://medimexa-back.web.app","type":"DEFAULT_SITE"}]}
+[debug] [2023-07-03T06:12:05.392Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/medimexa-back/sites 
+[debug] [2023-07-03T06:12:05.906Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/medimexa-back/sites 200
+[debug] [2023-07-03T06:12:05.908Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/medimexa-back/sites {"sites":[{"name":"projects/medimexa-back/sites/medimexa-back","defaultUrl":"https://medimexa-back.web.app","type":"DEFAULT_SITE"}]}
+[debug] [2023-07-03T06:12:05.914Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/medimexa-back/webApps/-/config [none]
+[debug] [2023-07-03T06:12:06.304Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/medimexa-back/webApps/-/config 200
+[debug] [2023-07-03T06:12:06.306Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/medimexa-back/webApps/-/config {"projectId":"medimexa-back","appId":"1:376506424578:web:9d61e0981dc00a5422b61b","storageBucket":"medimexa-back.appspot.com","locationId":"us-central","apiKey":"AIzaSyDD-Bi5mnpuEkeNwzlqdhPN-ODfSQX6zg0","authDomain":"medimexa-back.firebaseapp.com","messagingSenderId":"376506424578"}
 [info] 
-     ######## #### ########  ######## ########     ###     ######  ########
-     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
-     ######    ##  ########  ######   ########  #########  ######  ######
-     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
-     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+   Thank you for trying our early preview of Next.js support on Firebase Hosting.
+   During the preview, support is best-effort and breaking changes can be expected. Proceed with caution.
 
-You're about to initialize a Firebase project in this directory:
+   Documentation: https://firebase.google.com/docs/hosting/frameworks/nextjs
+   File a bug: https://github.com/firebase/firebase-tools/issues/new?template=bug_report.md
+   Submit a feature request: https://github.com/firebase/firebase-tools/issues/new?template=feature_request.md
 
-  /Users/Fernando/Desktop/medimexa-admin
+   We'd love to learn from you. Express your interest in helping us shape the future of Firebase Hosting: https://goo.gle/41enW5X
 
-Before we get started, keep in mind:
-
-  * You are initializing within an existing Firebase project directory
-
+[debug] [2023-07-03T06:12:44.197Z] Error: Build failed because of webpack errors
+    at webpackBuildImpl (/Users/Fernando/Desktop/medimexa-admin/node_modules/next/dist/build/webpack-build/impl.js:262:21)
+    at async webpackBuild (/Users/Fernando/Desktop/medimexa-admin/node_modules/next/dist/build/webpack-build/index.js:137:16)
+    at async /Users/Fernando/Desktop/medimexa-admin/node_modules/next/dist/build/index.js:529:119
+    at async Span.traceAsyncFn (/Users/Fernando/Desktop/medimexa-admin/node_modules/next/dist/trace/trace.js:103:20)
+    at async build (/Users/Fernando/Desktop/medimexa-admin/node_modules/next/dist/build/index.js:143:29)
+    at async build (/Users/Fernando/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/frameworks/next/index.js:57:5)
+    at async prepareFrameworks (/Users/Fernando/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/frameworks/index.js:211:33)
+    at async deploy (/Users/Fernando/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/deploy/index.js:55:13)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2023-07-03T06:12:56.549Z] ----------------------------------------------------------------------
+[debug] [2023-07-03T06:12:56.551Z] Command:       /usr/local/bin/firebase /Users/Fernando/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/bin/firebase deploy
+[debug] [2023-07-03T06:12:56.551Z] CLI Version:   12.4.0
+[debug] [2023-07-03T06:12:56.551Z] Platform:      darwin
+[debug] [2023-07-03T06:12:56.552Z] Node Version:  v16.16.0
+[debug] [2023-07-03T06:12:56.553Z] Time:          Mon Jul 03 2023 01:12:56 GMT-0500 (Central Daylight Time)
+[debug] [2023-07-03T06:12:56.554Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-07-03T06:12:56.659Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-07-03T06:12:56.660Z] > authorizing via signed-in user (medimexa.dev@gmail.com)
+[debug] [2023-07-03T06:12:56.660Z] [iam] checking project medimexa-back for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2023-07-03T06:12:56.662Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/medimexa-back:testIamPermissions [none]
+[debug] [2023-07-03T06:12:56.663Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/medimexa-back:testIamPermissions x-goog-quota-user=projects/medimexa-back
+[debug] [2023-07-03T06:12:56.664Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/medimexa-back:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-07-03T06:12:57.078Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/medimexa-back:testIamPermissions 200
+[debug] [2023-07-03T06:12:57.084Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/medimexa-back:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-07-03T06:12:57.088Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/medimexa-back [none]
+[debug] [2023-07-03T06:12:57.469Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/medimexa-back 200
+[debug] [2023-07-03T06:12:57.473Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/medimexa-back {"projectId":"medimexa-back","projectNumber":"376506424578","displayName":"medimexa","name":"projects/medimexa-back","resources":{"hostingSite":"medimexa-back","storageBucket":"medimexa-back.appspot.com","locationId":"us-central"},"state":"ACTIVE","etag":"1_355ae34a-2cfb-4447-8cea-c6c147e854bd"}
+[debug] [2023-07-03T06:13:01.021Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/medimexa-back/sites pageToken=&pageSize=10
+[debug] [2023-07-03T06:13:01.487Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/medimexa-back/sites 200
+[debug] [2023-07-03T06:13:01.490Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/medimexa-back/sites {"sites":[{"name":"projects/medimexa-back/sites/medimexa-back","defaultUrl":"https://medimexa-back.web.app","type":"DEFAULT_SITE"}]}
+[debug] [2023-07-03T06:13:01.492Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/medimexa-back/sites 
+[debug] [2023-07-03T06:13:02.014Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/medimexa-back/sites 200
+[debug] [2023-07-03T06:13:02.016Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/medimexa-back/sites {"sites":[{"name":"projects/medimexa-back/sites/medimexa-back","defaultUrl":"https://medimexa-back.web.app","type":"DEFAULT_SITE"}]}
+[debug] [2023-07-03T06:13:02.017Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/medimexa-back/webApps/-/config [none]
+[debug] [2023-07-03T06:13:02.508Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/medimexa-back/webApps/-/config 200
+[debug] [2023-07-03T06:13:02.510Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/medimexa-back/webApps/-/config {"projectId":"medimexa-back","appId":"1:376506424578:web:9d61e0981dc00a5422b61b","storageBucket":"medimexa-back.appspot.com","locationId":"us-central","apiKey":"AIzaSyDD-Bi5mnpuEkeNwzlqdhPN-ODfSQX6zg0","authDomain":"medimexa-back.firebaseapp.com","messagingSenderId":"376506424578"}
 [info] 
-=== Project Setup
+   Thank you for trying our early preview of Next.js support on Firebase Hosting.
+   During the preview, support is best-effort and breaking changes can be expected. Proceed with caution.
+
+   Documentation: https://firebase.google.com/docs/hosting/frameworks/nextjs
+   File a bug: https://github.com/firebase/firebase-tools/issues/new?template=bug_report.md
+   Submit a feature request: https://github.com/firebase/firebase-tools/issues/new?template=feature_request.md
+
+   We'd love to learn from you. Express your interest in helping us shape the future of Firebase Hosting: https://goo.gle/41enW5X
+
+[info] Building a Cloud Function to run this application. This is needed due to:
+[info]  • Image Optimization
 [info] 
-[info] First, let's associate this project directory with a Firebase project.
-[info] You can create multiple project aliases by running firebase use --add, 
-[info] but for now we'll just set up a default project.
+[debug] [2023-07-03T06:13:53.366Z] Error: Command failed: npm i --omit dev --no-audit
+    at checkExecSyncError (node:child_process:828:11)
+    at Object.execSync (node:child_process:899:15)
+    at execSync (pkg/prelude/bootstrap.js:2111:30)
+    at prepareFrameworks (/Users/Fernando/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/frameworks/index.js:362:42)
+    at async deploy (/Users/Fernando/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/deploy/index.js:55:13)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2023-07-03T06:23:32.706Z] ----------------------------------------------------------------------
+[debug] [2023-07-03T06:23:32.708Z] Command:       /usr/local/bin/firebase /Users/Fernando/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/bin/firebase deploy
+[debug] [2023-07-03T06:23:32.708Z] CLI Version:   12.4.0
+[debug] [2023-07-03T06:23:32.709Z] Platform:      darwin
+[debug] [2023-07-03T06:23:32.709Z] Node Version:  v16.16.0
+[debug] [2023-07-03T06:23:32.715Z] Time:          Mon Jul 03 2023 01:23:32 GMT-0500 (Central Daylight Time)
+[debug] [2023-07-03T06:23:32.715Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-07-03T06:23:32.820Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-07-03T06:23:32.822Z] > authorizing via signed-in user (medimexa.dev@gmail.com)
+[debug] [2023-07-03T06:23:32.822Z] [iam] checking project medimexa-back for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2023-07-03T06:23:32.824Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/medimexa-back:testIamPermissions [none]
+[debug] [2023-07-03T06:23:32.825Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/medimexa-back:testIamPermissions x-goog-quota-user=projects/medimexa-back
+[debug] [2023-07-03T06:23:32.826Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/medimexa-back:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-07-03T06:23:33.241Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/medimexa-back:testIamPermissions 200
+[debug] [2023-07-03T06:23:33.246Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/medimexa-back:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-07-03T06:23:33.249Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/medimexa-back [none]
+[debug] [2023-07-03T06:23:33.675Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/medimexa-back 200
+[debug] [2023-07-03T06:23:33.678Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/medimexa-back {"projectId":"medimexa-back","projectNumber":"376506424578","displayName":"medimexa","name":"projects/medimexa-back","resources":{"hostingSite":"medimexa-back","storageBucket":"medimexa-back.appspot.com","locationId":"us-central"},"state":"ACTIVE","etag":"1_355ae34a-2cfb-4447-8cea-c6c147e854bd"}
+[debug] [2023-07-03T06:23:37.763Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/medimexa-back/sites pageToken=&pageSize=10
+[debug] [2023-07-03T06:23:38.285Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/medimexa-back/sites 200
+[debug] [2023-07-03T06:23:38.288Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/medimexa-back/sites {"sites":[{"name":"projects/medimexa-back/sites/medimexa-back","defaultUrl":"https://medimexa-back.web.app","type":"DEFAULT_SITE"}]}
+[debug] [2023-07-03T06:23:38.290Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/medimexa-back/sites 
+[debug] [2023-07-03T06:23:38.714Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/medimexa-back/sites 200
+[debug] [2023-07-03T06:23:38.716Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/medimexa-back/sites {"sites":[{"name":"projects/medimexa-back/sites/medimexa-back","defaultUrl":"https://medimexa-back.web.app","type":"DEFAULT_SITE"}]}
+[debug] [2023-07-03T06:23:38.717Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/medimexa-back/webApps/-/config [none]
+[debug] [2023-07-03T06:23:39.100Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/medimexa-back/webApps/-/config 200
+[debug] [2023-07-03T06:23:39.101Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/medimexa-back/webApps/-/config {"projectId":"medimexa-back","appId":"1:376506424578:web:9d61e0981dc00a5422b61b","storageBucket":"medimexa-back.appspot.com","locationId":"us-central","apiKey":"AIzaSyDD-Bi5mnpuEkeNwzlqdhPN-ODfSQX6zg0","authDomain":"medimexa-back.firebaseapp.com","messagingSenderId":"376506424578"}
 [info] 
-[debug] [2023-06-27T01:02:25.893Z] Using project from CLI flag: medimexa-back
-[debug] [2023-06-27T01:02:25.895Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/medimexa-back [none]
-[debug] [2023-06-27T01:02:26.207Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/medimexa-back 200
-[debug] [2023-06-27T01:02:26.210Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/medimexa-back {"projectId":"medimexa-back","projectNumber":"376506424578","displayName":"medimexa","name":"projects/medimexa-back","resources":{"hostingSite":"medimexa-back","storageBucket":"medimexa-back.appspot.com","locationId":"us-central"},"state":"ACTIVE","etag":"1_0534b625-817e-40c7-b63f-b0df558b1d57"}
-[info] i  Using project medimexa-back (medimexa) 
+   Thank you for trying our early preview of Next.js support on Firebase Hosting.
+   During the preview, support is best-effort and breaking changes can be expected. Proceed with caution.
+
+   Documentation: https://firebase.google.com/docs/hosting/frameworks/nextjs
+   File a bug: https://github.com/firebase/firebase-tools/issues/new?template=bug_report.md
+   Submit a feature request: https://github.com/firebase/firebase-tools/issues/new?template=feature_request.md
+
+   We'd love to learn from you. Express your interest in helping us shape the future of Firebase Hosting: https://goo.gle/41enW5X
+
+[info] Building a Cloud Function to run this application. This is needed due to:
+[info]  • Image Optimization
 [info] 
-=== Hosting Setup
-[debug] [2023-06-27T01:02:36.618Z] SyntaxError: Unexpected end of JSON input
-    at JSON.parse (<anonymous>)
-    at findDependency (/Users/Fernando/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/frameworks/utils.js:150:23)
-    at getAstroVersion (/Users/Fernando/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/frameworks/astro/index.js:15:45)
-    at discover (/Users/Fernando/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/frameworks/astro/index.js:20:10)
-    at discover (/Users/Fernando/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/frameworks/index.js:45:38)
-    at async doSetup (/Users/Fernando/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/init/features/hosting/index.js:22:11)
-    at async init (/Users/Fernando/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/init/index.js:37:9)
+[debug] [2023-07-03T06:24:39.641Z] Error: Command failed: npm i --omit dev --no-audit
+    at checkExecSyncError (node:child_process:828:11)
+    at Object.execSync (node:child_process:899:15)
+    at execSync (pkg/prelude/bootstrap.js:2111:30)
+    at prepareFrameworks (/Users/Fernando/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/frameworks/index.js:362:42)
+    at async deploy (/Users/Fernando/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/deploy/index.js:55:13)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2023-07-03T06:26:11.321Z] ----------------------------------------------------------------------
+[debug] [2023-07-03T06:26:11.323Z] Command:       /usr/local/bin/firebase /Users/Fernando/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/bin/firebase deploy
+[debug] [2023-07-03T06:26:11.323Z] CLI Version:   12.4.0
+[debug] [2023-07-03T06:26:11.323Z] Platform:      darwin
+[debug] [2023-07-03T06:26:11.324Z] Node Version:  v16.16.0
+[debug] [2023-07-03T06:26:11.325Z] Time:          Mon Jul 03 2023 01:26:11 GMT-0500 (Central Daylight Time)
+[debug] [2023-07-03T06:26:11.326Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-07-03T06:26:11.428Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-07-03T06:26:11.429Z] > authorizing via signed-in user (medimexa.dev@gmail.com)
+[debug] [2023-07-03T06:26:11.429Z] [iam] checking project medimexa-back for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2023-07-03T06:26:11.431Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/medimexa-back:testIamPermissions [none]
+[debug] [2023-07-03T06:26:11.432Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/medimexa-back:testIamPermissions x-goog-quota-user=projects/medimexa-back
+[debug] [2023-07-03T06:26:11.433Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/medimexa-back:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-07-03T06:26:11.914Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/medimexa-back:testIamPermissions 200
+[debug] [2023-07-03T06:26:11.918Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/medimexa-back:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-07-03T06:26:11.921Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/medimexa-back [none]
+[debug] [2023-07-03T06:26:12.203Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/medimexa-back 200
+[debug] [2023-07-03T06:26:12.205Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/medimexa-back {"projectId":"medimexa-back","projectNumber":"376506424578","displayName":"medimexa","name":"projects/medimexa-back","resources":{"hostingSite":"medimexa-back","storageBucket":"medimexa-back.appspot.com","locationId":"us-central"},"state":"ACTIVE","etag":"1_355ae34a-2cfb-4447-8cea-c6c147e854bd"}
+[debug] [2023-07-03T06:26:15.457Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/medimexa-back/sites pageToken=&pageSize=10
+[debug] [2023-07-03T06:26:16.005Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/medimexa-back/sites 200
+[debug] [2023-07-03T06:26:16.007Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/medimexa-back/sites {"sites":[{"name":"projects/medimexa-back/sites/medimexa-back","defaultUrl":"https://medimexa-back.web.app","type":"DEFAULT_SITE"}]}
+[debug] [2023-07-03T06:26:16.009Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/medimexa-back/sites 
+[debug] [2023-07-03T06:26:16.489Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/medimexa-back/sites 200
+[debug] [2023-07-03T06:26:16.492Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/medimexa-back/sites {"sites":[{"name":"projects/medimexa-back/sites/medimexa-back","defaultUrl":"https://medimexa-back.web.app","type":"DEFAULT_SITE"}]}
+[debug] [2023-07-03T06:26:16.497Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/medimexa-back/webApps/-/config [none]
+[debug] [2023-07-03T06:26:16.893Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/medimexa-back/webApps/-/config 200
+[debug] [2023-07-03T06:26:16.894Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/medimexa-back/webApps/-/config {"projectId":"medimexa-back","appId":"1:376506424578:web:9d61e0981dc00a5422b61b","storageBucket":"medimexa-back.appspot.com","locationId":"us-central","apiKey":"AIzaSyDD-Bi5mnpuEkeNwzlqdhPN-ODfSQX6zg0","authDomain":"medimexa-back.firebaseapp.com","messagingSenderId":"376506424578"}
+[info] 
+   Thank you for trying our early preview of Next.js support on Firebase Hosting.
+   During the preview, support is best-effort and breaking changes can be expected. Proceed with caution.
+
+   Documentation: https://firebase.google.com/docs/hosting/frameworks/nextjs
+   File a bug: https://github.com/firebase/firebase-tools/issues/new?template=bug_report.md
+   Submit a feature request: https://github.com/firebase/firebase-tools/issues/new?template=feature_request.md
+
+   We'd love to learn from you. Express your interest in helping us shape the future of Firebase Hosting: https://goo.gle/41enW5X
+
+[info] Building a Cloud Function to run this application. This is needed due to:
+[info]  • Image Optimization
+[info] 
+[debug] [2023-07-03T06:26:55.975Z] Error: Command failed: npm i --omit dev --no-audit
+    at checkExecSyncError (node:child_process:828:11)
+    at Object.execSync (node:child_process:899:15)
+    at execSync (pkg/prelude/bootstrap.js:2111:30)
+    at prepareFrameworks (/Users/Fernando/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/frameworks/index.js:362:42)
+    at async deploy (/Users/Fernando/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/deploy/index.js:55:13)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2023-07-03T06:27:18.523Z] ----------------------------------------------------------------------
+[debug] [2023-07-03T06:27:18.525Z] Command:       /usr/local/bin/firebase /Users/Fernando/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/bin/firebase deploy
+[debug] [2023-07-03T06:27:18.526Z] CLI Version:   12.4.0
+[debug] [2023-07-03T06:27:18.526Z] Platform:      darwin
+[debug] [2023-07-03T06:27:18.526Z] Node Version:  v16.16.0
+[debug] [2023-07-03T06:27:18.527Z] Time:          Mon Jul 03 2023 01:27:18 GMT-0500 (Central Daylight Time)
+[debug] [2023-07-03T06:27:18.528Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-07-03T06:27:18.630Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-07-03T06:27:18.631Z] > authorizing via signed-in user (medimexa.dev@gmail.com)
+[debug] [2023-07-03T06:27:18.632Z] [iam] checking project medimexa-back for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2023-07-03T06:27:18.634Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/medimexa-back:testIamPermissions [none]
+[debug] [2023-07-03T06:27:18.635Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/medimexa-back:testIamPermissions x-goog-quota-user=projects/medimexa-back
+[debug] [2023-07-03T06:27:18.635Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/medimexa-back:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-07-03T06:27:19.001Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/medimexa-back:testIamPermissions 200
+[debug] [2023-07-03T06:27:19.006Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/medimexa-back:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-07-03T06:27:19.007Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/medimexa-back [none]
+[debug] [2023-07-03T06:27:19.279Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/medimexa-back 200
+[debug] [2023-07-03T06:27:19.280Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/medimexa-back {"projectId":"medimexa-back","projectNumber":"376506424578","displayName":"medimexa","name":"projects/medimexa-back","resources":{"hostingSite":"medimexa-back","storageBucket":"medimexa-back.appspot.com","locationId":"us-central"},"state":"ACTIVE","etag":"1_355ae34a-2cfb-4447-8cea-c6c147e854bd"}
+[debug] [2023-07-03T06:27:22.574Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/medimexa-back/sites pageToken=&pageSize=10
+[debug] [2023-07-03T06:27:23.153Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/medimexa-back/sites 200
+[debug] [2023-07-03T06:27:23.154Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/medimexa-back/sites {"sites":[{"name":"projects/medimexa-back/sites/medimexa-back","defaultUrl":"https://medimexa-back.web.app","type":"DEFAULT_SITE"}]}
+[debug] [2023-07-03T06:27:23.156Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/medimexa-back/sites 
+[debug] [2023-07-03T06:27:23.671Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/medimexa-back/sites 200
+[debug] [2023-07-03T06:27:23.672Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/medimexa-back/sites {"sites":[{"name":"projects/medimexa-back/sites/medimexa-back","defaultUrl":"https://medimexa-back.web.app","type":"DEFAULT_SITE"}]}
+[debug] [2023-07-03T06:27:23.674Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/medimexa-back/webApps/-/config [none]
+[debug] [2023-07-03T06:27:24.107Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/medimexa-back/webApps/-/config 200
+[debug] [2023-07-03T06:27:24.113Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/medimexa-back/webApps/-/config {"projectId":"medimexa-back","appId":"1:376506424578:web:9d61e0981dc00a5422b61b","storageBucket":"medimexa-back.appspot.com","locationId":"us-central","apiKey":"AIzaSyDD-Bi5mnpuEkeNwzlqdhPN-ODfSQX6zg0","authDomain":"medimexa-back.firebaseapp.com","messagingSenderId":"376506424578"}
+[info] 
+   Thank you for trying our early preview of Next.js support on Firebase Hosting.
+   During the preview, support is best-effort and breaking changes can be expected. Proceed with caution.
+
+   Documentation: https://firebase.google.com/docs/hosting/frameworks/nextjs
+   File a bug: https://github.com/firebase/firebase-tools/issues/new?template=bug_report.md
+   Submit a feature request: https://github.com/firebase/firebase-tools/issues/new?template=feature_request.md
+
+   We'd love to learn from you. Express your interest in helping us shape the future of Firebase Hosting: https://goo.gle/41enW5X
+
+[info] Building a Cloud Function to run this application. This is needed due to:
+[info]  • Image Optimization
+[info] 
+[debug] [2023-07-03T06:27:56.941Z] Error: Command failed: npm i --omit dev --no-audit
+    at checkExecSyncError (node:child_process:828:11)
+    at Object.execSync (node:child_process:899:15)
+    at execSync (pkg/prelude/bootstrap.js:2111:30)
+    at prepareFrameworks (/Users/Fernando/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/frameworks/index.js:362:42)
+    at async deploy (/Users/Fernando/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/deploy/index.js:55:13)
 [error] 
 [error] Error: An unexpected error has occurred.

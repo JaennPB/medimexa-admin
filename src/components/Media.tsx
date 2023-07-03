@@ -2,7 +2,7 @@ import { useRouter } from "next/navigation";
 import React, {useEffect, useState} from "react";
 
 type props = {
-  media?:any
+  model?:any
 }
 
 function Media({model=false} : props) {
@@ -59,7 +59,7 @@ function Media({model=false} : props) {
     </thead>
 
     <tbody>
-    {medias.map(media=><tr>
+    {medias.map((media:any)=><tr>
       <td> {media.data.name}</td>
       <td>  <button className="btn btn-sm" onClick={()=>open(media)}> ver</button>  </td>
      

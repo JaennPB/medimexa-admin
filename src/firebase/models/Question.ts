@@ -6,6 +6,8 @@ import {roleQuery} from './Role';
 
 class Question  extends Model {
 
+	media:any;
+	
 	constructor(Question: IQuestion) {
 		super('questions', Question);
 		this.media =new MediaService(this.data.id)

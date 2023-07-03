@@ -10,6 +10,7 @@ import {categoryQuery} from './Category';
 class Flashcard  extends Model {
 
 	media:any;
+	with:any;
 	
 	constructor(Flashcard: IFlashcard) {
 		super('flashcards', Flashcard);

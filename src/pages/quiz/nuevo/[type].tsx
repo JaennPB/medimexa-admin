@@ -11,8 +11,6 @@ import {toast} from 'react-toastify';
 import {useRouter} from 'next/router';
 const inter = Inter({ subsets: ["latin"] });
 import AuthService from '@/firebase/services/auth'
-import SelectCategory from '@/components/SelectCategory/index';
-
 
 export default function Home() {
 

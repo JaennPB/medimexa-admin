@@ -7,9 +7,8 @@ import Flashcard, {flashcardQuery} from '@/firebase/models/Flashcard';
 import Builder from '@/components/forms';
 import {toast} from 'react-toastify';
 import {useRouter} from 'next/router';
-const inter = Inter({ subsets: ["latin"] });
-import SelectCategory from '@/components/SelectCategory/index';
 import Media from '@/components/Media';
+const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
 

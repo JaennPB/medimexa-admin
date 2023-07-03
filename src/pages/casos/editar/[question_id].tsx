@@ -8,7 +8,7 @@ import Question, {questionQuery} from '@/firebase/models/Question';
 import Builder from '@/components/forms';
 import {toast} from 'react-toastify';
 import { useRouter } from 'next/router'
-import Media from '@/components/media';
+import Media from '@/components/Media';
 
 const inter = Inter({ subsets: ["latin"] });
 
