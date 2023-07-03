@@ -168,6 +168,7 @@ const Builder=({fields,onClick, confirm=true, labels=true, validations=false}: p
       <>
         {
           inputs.map((field:any)=>{
+
             const { name }= field;
 
             let readonly = false;

@@ -2,11 +2,14 @@ import IQuestion from '../interfaces/Question';
 import Model from './orm/Model';
 import Query from './orm/Query';
 import {roleQuery} from './Role';
+		import MediaService from '../services/media';
 
 class Question  extends Model {
 
 	constructor(Question: IQuestion) {
 		super('questions', Question);
+		this.media =new MediaService(this.data.id)
+
 	}
 
 }

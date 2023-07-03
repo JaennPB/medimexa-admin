@@ -11,6 +11,7 @@ import {
   getDocs,
 } from "firebase/firestore";
 import db from "../../config/firebase";
+import Collect from './Collect';
 
 const q = query(collection(db, "cities"), where("capital", "==", true));
 
@@ -43,7 +44,7 @@ class Query {
   all = () => {
     return getDocs(collection(db, this.table)).then((snapshot: any) => {
       return snapshot.docs.filter(this.filterDoc).map(this.mapDoc);
-    });
+    }).then((data:any)=> new Collect(data));
   };
 
   where = (key: any, sign: any, value: any) => {
@@ -53,7 +54,7 @@ class Query {
 
     return getDocs(q).then((snapshot: any) => {
       return snapshot.docs.filter(this.filterDoc).map(this.mapDoc);
-    });
+    }).then((data:any)=>new Collect(data));
   };
 
   whereRaw = (wheres: any) => {
@@ -63,7 +64,7 @@ class Query {
 
     return getDocs(q).then((snapshot: any) => {
       return snapshot.docs.filter(this.filterDoc).map(this.mapDoc);
-    });
+    }).then((data:any)=>new Collect(data));
   };
 
   subscribe = (setValue: any, setError: any = null) => {
@@ -94,7 +95,7 @@ class Query {
   };
 
   toArray=(res:any)=>{
-      return res.map((item:any)=>item.data)
+      return res.toArray()
   }
 
   first= (res:any)=>{

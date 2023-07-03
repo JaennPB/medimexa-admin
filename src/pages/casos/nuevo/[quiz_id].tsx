@@ -49,7 +49,7 @@ export default function Home() {
     },     
     {
       name:'question_id',
-      placeholder:"Pregunta padre",
+      placeholder:"Caso seriado",
       options : questions.map((question:any)=><option key={0} value={question.id}>{question.name}</option>),
     },
     {
@@ -72,12 +72,12 @@ export default function Home() {
   const saveQuestion=(data:any,setLoading:any)=>{
 
       data.quiz_id= quiz_id;
-      const user = new Question(data)
+      const question = new Question(data)
 
-      user.save().then(()=>{
+      question.save().then(()=>{
         setLoading(false)
         toast.success("Caso creado correctamente")
-        router.back();
+        router.push('/casos/editar/'+question.data.id);
       })
   }
 

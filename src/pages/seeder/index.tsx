@@ -1,7 +1,8 @@
 import Role, {roleQuery} from '@/firebase/models/Role'
 import User from '@/firebase/models/User';
+import Box from '@/firebase/models/Box';
 import QuizType from '@/firebase/models/QuizType';
-
+import TypeMedia from '@/firebase/models/TypeMedia';
 export default function Home() {
 
 
@@ -27,6 +28,72 @@ export default function Home() {
   }
 
 
+  const runFile = async ()=>{
+
+    let file = new TypeMedia({
+      name:'imagen',
+    });
+    await file.save();
+
+    file = new TypeMedia({
+      name:'pdf',
+    });
+    await file.save();
+
+    file = new TypeMedia({
+      name:'otro',
+    });
+    await file.save();
+
+    alert('type file completados')
+
+  }
+
+  const runBox = async ()=>{
+
+    let box = new Box({
+      name:'Box 1',
+      days:1,
+    });
+    await box.save();
+
+    box = new Box({
+      name:'Box 2',
+      days:2,
+    });
+    await box.save();
+
+    box = new Box({
+      name:'Box 3',
+      days:3,
+    });
+    await box.save();
+
+    box = new Box({
+      name:'Box 4',
+      days:7,
+    });
+    await box.save();
+ 
+
+    box = new Box({
+      name:'Box 5',
+      days:14,
+    });
+    await box.save();
+ 
+    box = new Box({
+      name:'Box 6',
+      days:28,
+    });
+    await box.save();
+ 
+
+    alert('boxes completados')
+
+  }
+
+
   const runQuizType = async ()=>{
 
     // let quiz = new QuizType({
@@ -40,6 +107,7 @@ export default function Home() {
      await quiz.save();
    
     alert('quiz type completados')
+
 
   }
 
@@ -91,6 +159,8 @@ export default function Home() {
     <button style={buttonStyle} onClick={runRoles}>Roles </button>
     <button style={buttonStyle} onClick={runUsers}>Usuarios </button>
     <button style={buttonStyle} onClick={runQuizType}>Tipos de quiz </button>
+    <button style={buttonStyle} onClick={runBox}>Boxes</button>
+    <button style={buttonStyle} onClick={runFile}>Type media</button>
     </main>
   );
 }

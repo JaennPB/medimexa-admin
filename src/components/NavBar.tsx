@@ -30,7 +30,7 @@ function NavBar({ isBuilder, noLeftItem }: Props) {
 
   }
   return (
-    <div className="navbar bg-base-100 h-[7vh]">
+    <div className="navbar bg-white h-[7vh]">
       <div className="navbar-start">
         {!isBuilder && (
           <label

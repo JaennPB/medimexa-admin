@@ -24,19 +24,22 @@ export default function Home() {
 
   useEffect(()=>{
 
-    quizTypeQuery.where('name','==','mexaquiz').then(quizTypeQuery.first).then(setQuizType)
+    quizTypeQuery.where('name','==','mexaquiz').then((collect:any)=>collect.first()).then(setQuizType)
   },[])
 
   useEffect(()=>{
 
     quizType.data?.id && quizQuery.where('type_id','==',quizType.data.id)
+    .then((collect:any)=>collect.with('category'))
     .then(setData)
   },[quizType])
 
   const columns = (row:any, model:any)=>{
 
+    console.log(row)
     return {
       nombre:row.name,
+      categoria:row.category?.name ||'-' ,
       _: <div className="text-center w-80">
             <Edit path={`/quiz/editar/${row.id}`} />
             <Edit path={`/casos/${row.id}`} title={"Ver casos"}/>

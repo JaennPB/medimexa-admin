@@ -21,7 +21,9 @@ export default function Home() {
 
   useEffect(()=>{
 
-    userQuery.all().then(userQuery.toArray).then(setData)
+    userQuery.all().then((collect:any)=>collect.toArray()).then(setData)
+
+    //.then(setData)
 
   },[])
 

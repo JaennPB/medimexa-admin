@@ -47,7 +47,7 @@ function Table({ description, columns, data, model=false}: Props) {
 
 const renderTable=()=>{
 
-  const _rows = rows.map((row:any,index:number) => (
+  const _rows = Object.values(rows).map((row:any,index:number) => (
         <tr  key={'tbody-tr-'+index}>
         {
             thead.map((column:any)=>(<td key={'tbody-tr-td-'+column.key}>{row[column.key]}</td>))

@@ -35,20 +35,42 @@ class MediaService {
 		])
 	}
 
-	save= async (typeName:string, file:any) =>{
+
+	detect = (file)=>{
+
+		const ext= file.name.split('.').pop().toLowerCase()
+
+		if(ext.includes('doc')){
+			return 'document'
+		}
+		if(ext.includes('pdf')){
+			return 'pdf'
+		}
+
+		if(ext.includes('jp') ||
+			ext.includes('png') ||
+			ext.includes('webp') ||
+			ext.includes('gif') ){
+			return 'imagen'
+		}
+		return 'otro';
+	}
+
+	save= async (file:any) =>{
+
+		const typeName = this.detect(file);
+
 		const type = (await this.findType(typeName))[0];
 
 
 		return storageService.upload(file).then(async (snapshot:any)=>{
 
 			const url = snapshot.metadata.fullPath;
-
 			const media = new Media({
 			 	'type_media_id' :type.data.id,
 			 	'model_id': this.model_id,
 			 	'name':file.name,
 			 	'url':url
-
 			})
 
 			return await media.save();

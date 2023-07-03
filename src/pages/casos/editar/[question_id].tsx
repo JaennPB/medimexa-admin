@@ -8,6 +8,8 @@ import Question, {questionQuery} from '@/firebase/models/Question';
 import Builder from '@/components/forms';
 import {toast} from 'react-toastify';
 import { useRouter } from 'next/router'
+import Media from '@/components/media';
+
 const inter = Inter({ subsets: ["latin"] });
 
  
@@ -58,7 +60,7 @@ export default function Home() {
     },     
     {
       name:'question_id',
-      placeholder:"Pregunta padre",
+      placeholder:"Caso seriado",
       options : questions.map((question:any)=><option key={0} value={question.id}>{question.name}</option>),
       defaultValue:question.data?.question_id 
     },
@@ -91,7 +93,7 @@ export default function Home() {
       question.update().then(()=>{
         setLoading(false)
         toast.success("Caso editado correctamente")
-        router.back();
+        router.push('/casos/'+question.data.quiz_id);
       })
   }
 
@@ -101,7 +103,8 @@ export default function Home() {
         <NavBar />
         <DashboardCard>
            <h1>Nuevo usuario </h1>
-    <Builder  fields={fields} onClick={saveQuestion} />     
+    <Builder  fields={fields} onClick={saveQuestion} />  
+    <Media model={question}/>   
         </DashboardCard>
       </DrawerContent>
     </main>
