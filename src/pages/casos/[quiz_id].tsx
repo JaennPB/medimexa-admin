@@ -6,6 +6,7 @@ import {userQuery} from '@/firebase/models/User';
 import { Inter } from "next/font/google";
 import {questionQuery} from '@/firebase/models/Question';
 import {quizTypeQuery} from '@/firebase/models/QuizType';
+import {quizQuery} from '@/firebase/models/Quiz';
 import Table from '@/components/Table';
 import {toast} from 'react-toastify';
 const inter = Inter({ subsets: ["latin"] });
@@ -24,11 +25,30 @@ export default function Home() {
   const  quiz_id  = router.query.quiz_id;
 
   const [data, setData] = useState<any>([]);
+  const [quizType, setQuizType] = useState<any>({});
+  const [quiz, setQuiz] = useState<any>({});
 
 
   useEffect(()=>{
-    quiz_id && questionQuery.where('quiz_id','==', quiz_id).then(setData)
+
+    quiz_id && quizQuery.find(quiz_id).then((quizDB:any)=>{
+      questionQuery.where('quiz_id','==', quiz_id).then(setData)
+
+      quizTypeQuery.find(quizDB.data.type_id).then(setQuizType)
+    })
   },[quiz_id])
+
+
+
+  const redirect = ()=>{
+    if(quizType.data.name=='mexaquiz'){
+      return  '/mexaquiz'
+    }
+    if(quizType.data.name=='enarm'){
+      return  '/simuladores'
+    }
+    return '/'
+  }
 
 
   const columns = (row:any,model:any)=>{
@@ -51,7 +71,7 @@ export default function Home() {
         path={quiz_id ? "/casos/nuevo/"+quiz_id : ''}
       />
       <DrawerContent>
-        <NavBar />
+        <NavBar back={redirect()}/>
         <DashboardCard>
           <NewItemCard
             title="Casos"

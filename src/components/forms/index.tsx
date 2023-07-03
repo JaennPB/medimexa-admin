@@ -145,9 +145,10 @@ const Builder=({fields,onClick, confirm=true, labels=true, validations=false}: p
     let options = data[field.name] || {};
 
     if(e.target.value.trim()==""){
-      return;
+      delete options[option];
+    } else {
+      options[option] = e.target.value;
     }
-    options[option] = e.target.value,
 
     setData({
       ...data,
@@ -251,6 +252,7 @@ const Builder=({fields,onClick, confirm=true, labels=true, validations=false}: p
 
         
 
+
             if(field.answers) {
               formInput = <div className="border-dashed border-2 border-gray-500 p-5">
                 <input 
@@ -311,6 +313,22 @@ const Builder=({fields,onClick, confirm=true, labels=true, validations=false}: p
           
             }
 
+
+            if(field.answer) {
+                formInput= <select 
+                key={'input'+field.name}
+                placeholder={fieldOrEmpty(field.placeholder)+ checkReadOnly(field) }
+                name={field.name}
+                defaultValue={field.defaultValue || '' }
+                value={data[name]}
+                onChange={handleChange}
+                className={"input input-bordered input-primary w-full mb-6 "+ field.className ||'' }
+              >
+                {Object.keys(data[field.answer] || {}).map((option:any)=><option>{option}</option>)}
+              {field.options}
+              </select>
+              
+            }
             return(
                 <>
                     {labels && <span>{field.placeholder}</span>}

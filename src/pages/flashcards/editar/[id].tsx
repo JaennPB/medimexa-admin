@@ -77,7 +77,7 @@ export default function Home() {
   return (
     <main className={`bg-base-200 h-screen w-screen ${inter.className}`}>
       <DrawerContent>
-        <NavBar />
+        <NavBar back={'/flashcards'}/>
         <DashboardCard>
             <Builder  fields={fields} onClick={saveFlashcards} /> 
             <Media  model={flashcard} />    

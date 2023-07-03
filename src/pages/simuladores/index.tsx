@@ -54,7 +54,7 @@ export default function Home() {
       <DrawerContent>
         <NavBar />
         <DashboardCard>
-          <NewItemCard title="Mexaquiz" description="Nuevo Quiz" />
+          <NewItemCard title="Simuladores ENARM" description="Nuevo Quiz" />
           <Table description="Pregúntas"  model={true} data={data} columns={columns}  />
         </DashboardCard>
       </DrawerContent>

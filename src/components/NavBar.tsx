@@ -12,9 +12,10 @@ import { signOut } from "@/redux/slices/userSlice";
 interface Props {
   isBuilder?: boolean;
   noLeftItem?: boolean;
+  back?:any;
 }
 
-function NavBar({ isBuilder, noLeftItem }: Props) {
+function NavBar({ isBuilder, noLeftItem, back=false }: Props) {
 
 
   const router = useRouter();
@@ -28,6 +29,10 @@ function NavBar({ isBuilder, noLeftItem }: Props) {
 
 
 
+  }
+
+  const clickBack=()=>{
+    router.push(back);
   }
   return (
     <div className="navbar bg-white h-[7vh]">
@@ -70,6 +75,8 @@ function NavBar({ isBuilder, noLeftItem }: Props) {
             Preguntas creadas: 12
           </div>
         )}
+
+        {back && <button className="btn btn-sm btn-primary" onClick={clickBack}>Volver</button>}
       </div>
       <div className="navbar-center">
         <Image src={logo} alt="logo" className="w-44" />

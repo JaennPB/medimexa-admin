@@ -75,7 +75,8 @@ export default function Home() {
       name:'correct',
       placeholder:"Respuesta correcta",
       required:true,
-      defaultValue:question.data?.correct
+      defaultValue:question.data?.correct,
+      answer:'options',
     },    
 
     ])
@@ -100,7 +101,7 @@ export default function Home() {
   return (
     <main className={`bg-base-200 h-screen w-screen ${inter.className}`}>
       <DrawerContent>
-        <NavBar />
+        <NavBar back={question ? '/casos/'+question.data?.quiz_id : ''} />
         <DashboardCard>
            <h1>Nuevo usuario </h1>
     <Builder  fields={fields} onClick={saveQuestion} />  

@@ -5,8 +5,8 @@ import NavBar from "@/components/NavBar";
 import {userQuery} from '@/firebase/models/User';
 import { Inter } from "next/font/google";
 import Quiz, {quizQuery} from '@/firebase/models/Quiz';
+import  {quizTypeQuery} from '@/firebase/models/QuizType';
 import {categoryQuery} from '@/firebase/models/Category';
-import {quizTypeQuery} from '@/firebase/models/QuizType';
 import Builder from '@/components/forms';
 import {toast} from 'react-toastify';
 const inter = Inter({ subsets: ["latin"] });
@@ -25,14 +25,24 @@ export default function Home() {
   const [quizType, setQuizType] = useState<any>({});
   const [quiz, setQuiz] = useState<any>({});
 
-
   useEffect(()=>{
     id && quizQuery.find(id).then(setQuiz)
   },[id])
 
+
   useEffect(()=>{
-    quizTypeQuery.where('name','==','mexaquiz').then(quizTypeQuery.first).then(setQuizType)
-  },[])
+    quiz.data?.id  && quizTypeQuery.find(quiz.data.type_id).then(setQuizType)
+  },[quiz])
+
+  const redirect = ()=>{
+    if(quizType.data.name=='mexaquiz'){
+      return  '/mexaquiz'
+    }
+    if(quizType.data.name=='enarm'){
+      return  '/simuladores'
+    }
+    return '/'
+  }
 
   const [fields, setFields] = useState<any>([])
 
@@ -73,10 +83,10 @@ export default function Home() {
 
         const quiz = new Quiz(data)
 
-        quiz.save().then(()=>{
+        quiz.save().then(async ()=>{
           setLoading(false)
           toast.success("Usuario creado correctamente")
-          router.push('/mexaquiz');
+          router.push(redirect());
         })
       } 
     })
@@ -85,7 +95,7 @@ export default function Home() {
   return (
     <main className={`bg-base-200 h-screen w-screen ${inter.className}`}>
       <DrawerContent>
-        <NavBar />
+        <NavBar back={redirect()} />
         <DashboardCard>
            <h1>Nuevo Quiz </h1>
     <Builder  fields={fields} onClick={saveQuiz} />     

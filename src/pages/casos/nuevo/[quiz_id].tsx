@@ -62,6 +62,7 @@ export default function Home() {
       name:'correct',
       placeholder:"Respuesta correcta",
       required:true,
+      answer:'options',
     },    
 
     ])
