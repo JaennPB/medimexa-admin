@@ -59,7 +59,7 @@ function Media({model=false} : props) {
     </thead>
 
     <tbody>
-    {medias.map((media:any)=><tr>
+    {medias.map((media:any, index:number)=><tr key={index}>
       <td> {media.data.name}</td>
       <td>  <button className="btn btn-sm" onClick={()=>open(media)}> ver</button>  </td>
      

@@ -324,7 +324,7 @@ const Builder=({fields,onClick, confirm=true, labels=true, validations=false}: p
                 onChange={handleChange}
                 className={"input input-bordered input-primary w-full mb-6 "+ field.className ||'' }
               >
-                {Object.keys(data[field.answer] || {}).map((option:any)=><option>{option}</option>)}
+                {Object.keys(data[field.answer] || {}).map((option:any, index:number)=><option value={option} key={index}>{option}</option>)}
               {field.options}
               </select>
               
